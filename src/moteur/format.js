@@ -23,3 +23,10 @@ export function cote(gain, mise) {
   if (!(mise > 0)) return '—';
   return `${(gain / mise).toFixed(1).replace('.', ',')} contre 1`;
 }
+
+/** Un nombre court à une décimale au plus : « 28,8 », « 12 ». */
+export function court(x) {
+  if (!Number.isFinite(x)) return '—';
+  const r = Math.round(x * 10) / 10;
+  return String(r).replace('.', ',');
+}
