@@ -6,7 +6,7 @@
 // n'a pas pu être vérifié sur un vrai fichier : si une main n'est pas
 // reconnue, elle est comptée dans `ignorees` avec la raison, jamais avalée.
 
-import { lireCartes } from './cartes.js';
+import { lireCartes } from '../moteur/cartes.js';
 
 export const RUES = ['preflop', 'flop', 'turn', 'river'];
 

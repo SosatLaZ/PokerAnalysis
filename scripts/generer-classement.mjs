@@ -1,4 +1,4 @@
-// Génère src/classement.js : les 169 mains de départ rangées de la plus forte à
+// Génère src/moteur/classement.js : les 169 mains de départ rangées de la plus forte à
 // la plus faible, selon leur équité contre une main adverse au hasard (le
 // classement « PokerStove »). C'est lui qui donne un sens à « les 15 % meilleures mains ».
 //
@@ -6,8 +6,8 @@
 
 import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { CLASSES, combosDeClasse } from '../src/classes.js';
-import { calculerEquite } from '../src/equite.js';
+import { CLASSES, combosDeClasse } from '../src/moteur/classes.js';
+import { calculerEquite } from '../src/moteur/equite.js';
 
 const iterations = Number(process.argv[2] ?? 400_000);
 const toutes = [];
@@ -37,5 +37,5 @@ ${corps}
 
 export const CLASSEMENT = CLASSEMENT_EQUITES.map(([classe]) => classe);
 `;
-writeFileSync(fileURLToPath(new URL('../src/classement.js', import.meta.url)), fichier);
-console.log('src/classement.js écrit.');
+writeFileSync(fileURLToPath(new URL('../src/moteur/classement.js', import.meta.url)), fichier);
+console.log('src/moteur/classement.js écrit.');

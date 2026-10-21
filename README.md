@@ -83,7 +83,7 @@ Les morceaux se séparent par des virgules : `22+, A2s+, KTo+`.
 
 ## La détection
 
-`src/historique.js` lit le format texte « à la PokerStars », que suivent
+`src/analyse/historique.js` lit le format texte « à la PokerStars », que suivent
 Winamax et la plupart des convertisseurs, ainsi que ses équivalents en
 français (« se couche », « suit », « relance … à … »). Une main illisible
 n'est jamais avalée : elle est listée avec sa raison.
@@ -108,7 +108,7 @@ Le format d'export des mains de Betclic n'a pas pu être vérifié : aucune
 spécification publique, et aucun fichier réel dans ce dépôt. Si ton export
 n'est pas lu (la page et la commande listent les mains ignorées et pourquoi),
 ajoute quelques mains anonymisées dans `exemples/` : l'adaptation tient dans
-`src/historique.js`.
+`src/analyse/historique.js`.
 
 ## Ce que l'outil ne fait pas
 

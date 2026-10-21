@@ -1,12 +1,12 @@
 // La page : trois outils branchés sur le même moteur que la ligne de commande.
 
-import { RANGS, SYMBOLES, NOMS_RANGS, carte, rangDe, couleurDe, afficherCartes } from '../src/cartes.js';
-import { lireRange, decrireRange } from '../src/ranges.js';
-import { calculerEquite } from '../src/equite.js';
-import { deciderSuivre, analyserTapis } from '../src/decision.js';
-import { lireHistorique } from '../src/historique.js';
-import { analyserSession } from '../src/detection.js';
-import { pct, montant, signe } from '../src/format.js';
+import { RANGS, SYMBOLES, NOMS_RANGS, carte, rangDe, couleurDe, afficherCartes } from '../src/moteur/cartes.js';
+import { lireRange, decrireRange } from '../src/moteur/ranges.js';
+import { calculerEquite } from '../src/moteur/equite.js';
+import { deciderSuivre, analyserTapis } from '../src/strategie/decision.js';
+import { lireHistorique } from '../src/analyse/historique.js';
+import { analyserSession } from '../src/analyse/detection.js';
+import { pct, montant, signe } from '../src/moteur/format.js';
 
 const NOMS_COULEURS = ['trèfle', 'carreau', 'cœur', 'pique'];
 const $ = (id) => document.getElementById(id);
@@ -606,7 +606,7 @@ function brancherSession() {
       'div',
       { class: 'groupe' },
       el('p', { class: 'etiquette' }, `${ignorees.length} main${ignorees.length > 1 ? 's' : ''} non lue${ignorees.length > 1 ? 's' : ''}`),
-      el('p', { class: 'aide' }, 'Si ton fichier vient de Betclic et que beaucoup de mains ne sont pas lues, le format diffère : le lecteur s’adapte en un seul fichier (src/historique.js).'),
+      el('p', { class: 'aide' }, 'Si ton fichier vient de Betclic et que beaucoup de mains ne sont pas lues, le format diffère : le lecteur s’adapte en un seul fichier (src/analyse/historique.js).'),
       el('ul', { class: 'raisons' }, ignorees.slice(0, 8).map((m) => el('li', {}, `${m.id ? `#${m.id} : ` : ''}${m.erreur}`))),
     );
   }

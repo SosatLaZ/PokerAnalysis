@@ -1,9 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { lireHistorique, lireMontant, calculerPositions, decouperMains } from '../src/historique.js';
-import { analyserSession, detecterFuites, formaterRapport } from '../src/detection.js';
-import { nomCartes } from '../src/cartes.js';
+import { lireHistorique, lireMontant, calculerPositions, decouperMains } from '../src/analyse/historique.js';
+import { analyserSession, detecterFuites, formaterRapport } from '../src/analyse/detection.js';
+import { nomCartes } from '../src/moteur/cartes.js';
 
 const EXEMPLE = readFileSync(new URL('../exemples/session-exemple.txt', import.meta.url), 'utf8');
 const proche = (x, attendu, tolerance = 1e-9) => assert.ok(Math.abs(x - attendu) <= tolerance, `${x} au lieu de ${attendu}`);

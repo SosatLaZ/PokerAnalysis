@@ -13,10 +13,10 @@
 // Tout ce qui dépend d'une hypothèse (la range supposée, les seuils de
 // fuite pour du 6-max) le dit dans le rapport.
 
-import { calculerEquite } from './equite.js';
-import { lireRange, retirerBloquees } from './ranges.js';
-import { afficherCartes } from './cartes.js';
-import { pct, montant, signe } from './format.js';
+import { calculerEquite } from '../moteur/equite.js';
+import { lireRange, retirerBloquees } from '../moteur/ranges.js';
+import { afficherCartes } from '../moteur/cartes.js';
+import { pct, montant, signe } from '../moteur/format.js';
 
 export const SEUILS_6MAX = {
   vpipMax: 32,

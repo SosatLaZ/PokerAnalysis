@@ -1,8 +1,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { deciderSuivre, deciderTapis, analyserTapis, equiteRequise } from '../src/decision.js';
-import { lireCartes } from '../src/cartes.js';
-import { lireRange } from '../src/ranges.js';
+import { deciderSuivre, deciderTapis, analyserTapis, equiteRequise } from '../src/strategie/decision.js';
+import { lireCartes } from '../src/moteur/cartes.js';
+import { lireRange } from '../src/moteur/ranges.js';
 
 const proche = (x, attendu, tolerance = 1e-9) => assert.ok(Math.abs(x - attendu) <= tolerance, `${x} au lieu de ${attendu}`);
 

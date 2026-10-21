@@ -1,8 +1,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { calculerEquite } from '../src/equite.js';
-import { lireCartes } from '../src/cartes.js';
-import { lireRange } from '../src/ranges.js';
+import { calculerEquite } from '../src/moteur/equite.js';
+import { lireCartes } from '../src/moteur/cartes.js';
+import { lireRange } from '../src/moteur/ranges.js';
 
 const main = (texte) => [lireCartes(texte)];
 const proche = (x, attendu, tolerance, message) =>

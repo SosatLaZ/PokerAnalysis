@@ -1,9 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { lireCartes, nomCartes, afficherCartes, classeDeMain } from '../src/cartes.js';
-import { lireRange, lireJoueur, classesPourcentage, retirerBloquees, decrireRange, TOTAL_COMBOS } from '../src/ranges.js';
-import { CLASSES } from '../src/classes.js';
-import { CLASSEMENT } from '../src/classement.js';
+import { lireCartes, nomCartes, afficherCartes, classeDeMain } from '../src/moteur/cartes.js';
+import { lireRange, lireJoueur, classesPourcentage, retirerBloquees, decrireRange, TOTAL_COMBOS } from '../src/moteur/ranges.js';
+import { CLASSES } from '../src/moteur/classes.js';
+import { CLASSEMENT } from '../src/moteur/classement.js';
 
 test('les cartes se lisent dans toutes les écritures courantes', () => {
   const attendu = 'Ah Kd Tc 9s';

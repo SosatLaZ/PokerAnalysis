@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { evaluer, categorieDe, decrireMain, CATEGORIES } from '../src/evaluateur.js';
-import { lireCartes } from '../src/cartes.js';
+import { evaluer, categorieDe, decrireMain, CATEGORIES } from '../src/moteur/evaluateur.js';
+import { lireCartes } from '../src/moteur/cartes.js';
 
 const score = (texte) => evaluer(lireCartes(texte));
 

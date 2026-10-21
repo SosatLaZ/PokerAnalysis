@@ -10,9 +10,9 @@
 // Les montants sont dans l'unité qu'on veut (euros, jetons, grosses blindes),
 // pourvu que ce soit la même partout.
 
-import { calculerEquite } from './equite.js';
-import { frequenceRange, retirerBloquees } from './ranges.js';
-import { pct, montant, signe, cote } from './format.js';
+import { calculerEquite } from '../moteur/equite.js';
+import { frequenceRange, retirerBloquees } from '../moteur/ranges.js';
+import { pct, montant, signe, cote } from '../moteur/format.js';
 
 export const ACTIONS = {
   SUIVRE: 'Suivre',
