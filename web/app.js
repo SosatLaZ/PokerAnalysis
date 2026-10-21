@@ -8,6 +8,7 @@ import { lireHistorique } from '../src/analyse/historique.js';
 import { analyserSession } from '../src/analyse/detection.js';
 import { pct, montant, signe, court } from '../src/moteur/format.js';
 import { brancherEntrainement } from './entrainement.js';
+import { brancherSuivi } from './suivi.js';
 import { $, el, NOMS_COULEURS, estRouge, lettreRang, visuelCarte, chiffres } from './ui.js';
 
 function debounce(fn, ms) {
@@ -644,7 +645,7 @@ function brancherSession() {
 /* Onglets                                                             */
 /* ------------------------------------------------------------------ */
 
-const VUES = ['entrainement', 'decision', 'tapis', 'session'];
+const VUES = ['entrainement', 'decision', 'tapis', 'session', 'suivi'];
 function montrer(vue) {
   const choisie = VUES.includes(vue) ? vue : 'entrainement';
   for (const v of VUES) $(`vue-${v}`).hidden = v !== choisie;
@@ -670,6 +671,7 @@ window.addEventListener('hashchange', () => montrer(location.hash.slice(1)));
 brancherDecision();
 brancherTapis();
 const session = brancherSession();
+brancherSuivi();
 brancherEntrainement({
   envoyerVersAnalyse(texte, hero) {
     session.analyserTexte(texte, hero);

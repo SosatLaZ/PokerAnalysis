@@ -13,13 +13,14 @@ JavaScript natif, zéro dépendance, Node 18 ou plus récent.
 | **Entraînement** | « Est-ce que je joue bien, et est-ce que je fais n'importe quoi ? » | Une table Spin & Rush (3 joueurs, 500 jetons, blindes qui montent), tête-à-tête ou cash 6-max contre des bots à 4 profils. Chaque décision est chronométrée et jugée par les 4 profils : bon, choix de style, erreur, n'importe quoi. Bilan : score de discipline, temps de décision, style le plus proche, tilt. |
 | **Suivre ou pas** | « Je paie 6 dans un pot de 12 avec A♥K♥ sur Q♥7♥2♣, c'est rentable ? » | Équité exacte (ou Monte-Carlo) contre une range, comparée à la cote du pot ; EV du call, rake et gains implicites compris. |
 | **Tapis ou pas** | « 10 bb en petite blinde avec A7o, je pousse ? » | Probabilité que tout le monde se couche, équité quand on est suivi, espérance du tapis. Fait pour les tournois et les Twister. |
+| **Suivi** | « Combien je gagne vraiment, où, et contre qui ? » | Comme PokerTracker : base de mains sans doublon, courbe de gains et d'all-in EV, résultats par jour, limite et position, filtres (cartes, position, tapis, abattage, adversaire…), rejeu coup par coup, stats de chaque adversaire. |
 | **Analyse de session** | « Je perds parce que je joue mal ou parce que je n'ai pas de chance ? » | VPIP, PFR, agression, abattages, résultats par position ; fuites détectées ; chance sur les tapis (attendu contre réel) ; calls et abandons contraires à la cote. |
 
 ## Démarrer
 
 ```bash
 npm test                 # 78 tests
-npm run web              # la page sur http://localhost:8080
+npm run web              # la page sur http://localhost:8080 (ta base de mains est gardée dans data/)
 node bin/poker.js aide   # la ligne de commande
 ```
 

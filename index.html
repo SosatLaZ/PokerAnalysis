@@ -101,6 +101,7 @@ nav.onglets a:focus-visible, button:focus-visible, input:focus-visible, textarea
 .vue.large { grid-template-columns: minmax(0, 1fr); }
 @media (max-width: 860px) { .vue { grid-template-columns: minmax(0, 1fr); } }
 
+.panneau > * { min-width: 0; }
 .panneau { background: var(--surface); border: 1px solid var(--trait); border-radius: 14px; padding: 18px; display: grid; gap: 18px; min-width: 0; }
 .verdict-panneau { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); }
 @media (max-width: 860px) { .verdict-panneau { position: static; } }
@@ -302,6 +303,20 @@ button.action.tapis { border-color: var(--mauvais); color: var(--mauvais); }
 .resultat-main { margin: 0; font-weight: 600; }
 #ent-retour:empty { display: none; }
 
+/* Suivi */
+.cadre-courbe { overflow-x: auto; }
+svg.courbe { width: 100%; min-width: 320px; height: auto; display: block; }
+svg.courbe .grille { stroke: var(--trait); stroke-width: 1; }
+svg.courbe .axe-zero { stroke: var(--discret); stroke-width: 1; }
+svg.courbe .graduation { fill: var(--discret); font: 11px var(--police-chiffres); }
+svg.courbe .ligne-gains { stroke: var(--tapis); stroke-width: 2.5; }
+svg.courbe .ligne-ev { stroke: var(--limite); stroke-width: 1.5; stroke-dasharray: 5 4; }
+svg.courbe .point-gains { fill: var(--tapis); }
+tr.cliquable { cursor: pointer; }
+tr.cliquable:hover td, tr.cliquable:focus td { background: var(--tapis-doux); }
+tr.cliquable:focus { outline: 2px solid var(--tapis); outline-offset: -2px; }
+#suivi-f-erreur:empty, #suivi-message:empty { display: none; }
+
 footer.pied { color: var(--discret); font-size: 0.82rem; max-width: 75ch; }
 footer.pied p { margin: 0 0 6px; }
 
@@ -331,6 +346,7 @@ footer.pied p { margin: 0 0 6px; }
       <a href="#decision" data-vue="decision">Suivre ou pas</a>
       <a href="#tapis" data-vue="tapis">Tapis ou pas</a>
       <a href="#session" data-vue="session">Analyse de session</a>
+      <a href="#suivi" data-vue="suivi">Suivi</a>
     </nav>
   </header>
 
@@ -499,6 +515,55 @@ footer.pied p { margin: 0 0 6px; }
       </div>
     </div>
     <div class="panneau" id="session-resultat" aria-live="polite"></div>
+  </section>
+
+  <!-- Suivi : la base de mains -->
+  <section class="vue large" id="vue-suivi" aria-label="Suivi de tes mains" hidden>
+    <div class="panneau">
+      <div class="groupe">
+        <p class="etiquette">Ta base de mains</p>
+        <p class="aide">Importe tes historiques autant de fois que tu veux : chaque main n’est gardée qu’une fois. <span id="suivi-lieu"></span></p>
+        <textarea id="suivi-texte" spellcheck="false" aria-label="Mains à importer" placeholder="Colle ici l’historique de tes mains (téléchargé depuis l’app Betclic, ou une partie de l’onglet Entraînement)"></textarea>
+      </div>
+      <div class="ligne">
+        <button type="button" class="bouton" id="suivi-importer">Ajouter à ma base</button>
+        <label class="bouton-secondaire" for="suivi-fichiers">Importer des fichiers
+          <input type="file" id="suivi-fichiers" accept=".txt,text/plain" multiple hidden>
+        </label>
+        <button type="button" class="bouton-secondaire" id="suivi-exemple">Ajouter l’exemple Spin &amp; Rush</button>
+        <button type="button" class="bouton-secondaire" id="suivi-vider">Vider la base</button>
+      </div>
+      <p class="aide" id="suivi-message" aria-live="polite"></p>
+    </div>
+    <div class="panneau" id="suivi-resume"></div>
+    <div class="panneau">
+      <p class="etiquette">Retrouver une main</p>
+      <div class="ligne">
+        <label class="champ etroit">Position
+          <select id="suivi-f-position"><option value="">Toutes</option><option>BTN</option><option>SB</option><option>BB</option><option>UTG</option><option>MP</option><option>HJ</option><option>CO</option></select>
+        </label>
+        <label class="champ etroit">Tes cartes
+          <input type="text" id="suivi-f-range" placeholder="AK, 77+, A2s+" autocomplete="off" spellcheck="false">
+        </label>
+        <label class="champ etroit">Résultat
+          <select id="suivi-f-resultat"><option value="">Tous</option><option value="gagnees">Gagnées</option><option value="perdues">Perdues</option></select>
+        </label>
+        <label class="champ etroit">Jusqu’au
+          <select id="suivi-f-rue"><option value="">Peu importe</option><option value="flop">Flop</option><option value="turn">Tournant</option><option value="river">Rivière</option></select>
+        </label>
+        <label class="champ etroit">Pot d’au moins (bb)
+          <input type="number" id="suivi-f-pot" min="0" step="any" inputmode="decimal">
+        </label>
+        <label class="champ etroit">Contre
+          <select id="suivi-f-adversaire"><option value="">Tous</option></select>
+        </label>
+        <label class="case"><input type="checkbox" id="suivi-f-tapis"> Tapis</label>
+        <label class="case"><input type="checkbox" id="suivi-f-abattage"> Abattage</label>
+      </div>
+      <p class="erreur" id="suivi-f-erreur"></p>
+      <div id="suivi-mains"></div>
+      <div id="suivi-rejeu" class="groupe"></div>
+    </div>
   </section>
 
   <footer class="pied">
