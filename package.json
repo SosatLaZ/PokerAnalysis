@@ -1,0 +1,20 @@
+{
+  "name": "poker-analysis",
+  "version": "0.1.0",
+  "description": "Analyse d'équité au Texas Hold'em : équité exacte ou Monte-Carlo, cote du pot, décision suivre / se coucher, tapis ou se coucher, et détection des fuites dans les historiques de mains.",
+  "type": "module",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "poker": "bin/poker.js"
+  },
+  "scripts": {
+    "test": "node --test",
+    "web": "node scripts/serveur.mjs",
+    "classement": "node scripts/generer-classement.mjs",
+    "poker": "node bin/poker.js"
+  }
+}

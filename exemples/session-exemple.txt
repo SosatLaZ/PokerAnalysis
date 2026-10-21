@@ -1,0 +1,191 @@
+PokerStars Hand #250000000001:  Hold'em No Limit (€0.05/€0.10 EUR) - 2026/10/20 21:14:03 CET
+Table 'Andromeda II' 6-max Seat #3 is the button
+Seat 1: Lucien (€10.40 in chips)
+Seat 2: Hero (€10 in chips)
+Seat 3: Margot (€9.35 in chips)
+Seat 4: Paulo (€12.50 in chips)
+Seat 5: Ines (€10 in chips)
+Seat 6: Remi (€8 in chips)
+Paulo: posts small blind €0.05
+Ines: posts big blind €0.10
+*** HOLE CARDS ***
+Dealt to Hero [Ah Kd]
+Remi: folds
+Lucien: folds
+Hero: raises €0.20 to €0.30
+Margot: folds
+Paulo: folds
+Ines: calls €0.20
+*** FLOP *** [Kc 7h 2d]
+Ines: checks
+Hero: bets €0.40
+Ines: calls €0.40
+*** TURN *** [Kc 7h 2d] [9s]
+Ines: bets €1.20
+Hero: calls €1.20
+*** RIVER *** [Kc 7h 2d 9s] [3c]
+Ines: checks
+Hero: checks
+*** SHOW DOWN ***
+Ines: shows [9h 9d] (three of a kind, Nines)
+Hero: mucks hand
+Ines collected €3.80 from pot
+*** SUMMARY ***
+Total pot €3.85 | Rake €0.05
+Board [Kc 7h 2d 9s 3c]
+Seat 2: Hero mucked [Ah Kd]
+Seat 5: Ines (big blind) showed [9h 9d] and won (€3.80) with three of a kind, Nines
+
+
+
+PokerStars Hand #250000000002:  Hold'em No Limit (€0.05/€0.10 EUR) - 2026/10/20 21:15:40 CET
+Table 'Andromeda II' 6-max Seat #4 is the button
+Seat 1: Lucien (€10.40 in chips)
+Seat 2: Hero (€8.15 in chips)
+Seat 3: Margot (€9.35 in chips)
+Seat 4: Paulo (€12.45 in chips)
+Seat 5: Ines (€11.80 in chips)
+Seat 6: Remi (€8 in chips)
+Ines: posts small blind €0.05
+Remi: posts big blind €0.10
+*** HOLE CARDS ***
+Dealt to Hero [As Ah]
+Lucien: folds
+Hero: raises €0.20 to €0.30
+Margot: raises €0.70 to €1
+Paulo: folds
+Ines: folds
+Remi: folds
+Hero: raises €1.40 to €2.40
+Margot: raises €6.95 to €9.35 and is all-in
+Hero: calls €5.75 and is all-in
+Uncalled bet (€1.20) returned to Margot
+*** FLOP *** [Kc 8d 4s]
+*** TURN *** [Kc 8d 4s] [2h]
+*** RIVER *** [Kc 8d 4s 2h] [Jc]
+*** SHOW DOWN ***
+Margot: shows [Kd Ks] (three of a kind, Kings)
+Hero: shows [As Ah] (a pair of Aces)
+Margot collected €16.35 from pot
+*** SUMMARY ***
+Total pot €16.45 | Rake €0.10
+Board [Kc 8d 4s 2h Jc]
+
+
+
+PokerStars Hand #250000000003:  Hold'em No Limit (€0.05/€0.10 EUR) - 2026/10/20 21:16:30 CET
+Table 'Andromeda II' 6-max Seat #5 is the button
+Seat 1: Lucien (€10.40 in chips)
+Seat 2: Hero (€10 in chips)
+Seat 3: Margot (€17.65 in chips)
+Seat 4: Paulo (€12.45 in chips)
+Seat 5: Ines (€11.75 in chips)
+Seat 6: Remi (€7.90 in chips)
+Remi: posts small blind €0.05
+Lucien: posts big blind €0.10
+*** HOLE CARDS ***
+Dealt to Hero [7c 2d]
+Hero: folds
+Margot: folds
+Paulo: raises €0.20 to €0.30
+Ines: folds
+Remi: folds
+Lucien: folds
+Uncalled bet (€0.20) returned to Paulo
+Paulo collected €0.25 from pot
+Paulo: doesn't show hand
+*** SUMMARY ***
+Total pot €0.25 | Rake €0
+
+
+
+PokerStars Hand #250000000004:  Hold'em No Limit (€0.05/€0.10 EUR) - 2026/10/20 21:17:12 CET
+Table 'Andromeda II' 6-max Seat #6 is the button
+Seat 1: Lucien (€10 in chips)
+Seat 2: Hero (€10 in chips)
+Seat 3: Margot (€9.20 in chips)
+Seat 6: Remi (€6.50 in chips)
+Lucien: posts small blind €0.05
+Hero: posts big blind €0.10
+*** HOLE CARDS ***
+Dealt to Hero [9h 8h]
+Margot: folds
+Remi: raises €0.20 to €0.30
+Lucien: folds
+Hero: calls €0.20
+*** FLOP *** [Ah 7h 2c]
+Hero: checks
+Remi: bets €0.40
+Hero: raises €1.20 to €1.60
+Remi: raises €4.60 to €6.20 and is all-in
+Hero: calls €4.60
+*** TURN *** [Ah 7h 2c] [Kd]
+*** RIVER *** [Ah 7h 2c Kd] [6h]
+*** SHOW DOWN ***
+Hero: shows [9h 8h] (a flush, Ace high)
+Remi: shows [As Kc] (two pair, Aces and Kings)
+Hero collected €12.90 from pot
+*** SUMMARY ***
+Total pot €13.05 | Rake €0.15
+Board [Ah 7h 2c Kd 6h]
+
+
+
+Winamax Poker - CashGame - HandId: #20000-5-1760987000 - Holdem no limit (0.05€/0.10€) - 2026/10/20 21:20:00 UTC
+Table: 'Nice 05' 6-max (real money) Seat #1 is the button
+Seat 1: Lucien (10€)
+Seat 2: Hero (10€)
+Seat 3: Margot (10€)
+*** ANTE/BLINDS ***
+Hero posts small blind 0.05€
+Margot posts big blind 0.10€
+Dealt to Hero [Qs Qd]
+*** PRE-FLOP ***
+Lucien raises 0.20€ to 0.30€
+Hero raises 0.70€ to 1€
+Margot folds
+Lucien calls 0.70€
+*** FLOP *** [Jc 5s 3h]
+Hero bets 1.20€
+Lucien folds
+Hero collected 2€ from pot
+*** SUMMARY ***
+Total pot 2.10€ | Rake 0.10€
+Board: [Jc 5s 3h]
+Seat 2: Hero (small blind) won 2€
+
+
+
+PokerStars Hand #250000000006:  Hold'em No Limit (€0.05/€0.10 EUR) - 2026/10/20 21:22:05 CET
+Table 'Andromeda II' 6-max Seat #1 is the button
+Seat 1: Lucien (€10 in chips)
+Seat 2: Hero (€10 in chips)
+Seat 3: Margot (€9.20 in chips)
+Seat 6: Remi (€10 in chips)
+Hero: posts small blind €0.05
+Margot: posts big blind €0.10
+*** HOLE CARDS ***
+Dealt to Hero [Jd Tc]
+Remi: raises €0.20 to €0.30
+Lucien: folds
+Hero: calls €0.25
+Margot: folds
+*** FLOP *** [Ks 6d 2h]
+Hero: checks
+Remi: bets €0.45
+Hero: calls €0.45
+*** TURN *** [Ks 6d 2h] [4c]
+Hero: checks
+Remi: bets €1.10
+Hero: calls €1.10
+*** RIVER *** [Ks 6d 2h 4c] [8s]
+Hero: checks
+Remi: bets €2.50
+Hero: calls €2.50
+*** SHOW DOWN ***
+Remi: shows [Ah Kc] (a pair of Kings)
+Hero: mucks hand
+Remi collected €8.75 from pot
+*** SUMMARY ***
+Total pot €8.80 | Rake €0.05
+Board [Ks 6d 2h 4c 8s]
