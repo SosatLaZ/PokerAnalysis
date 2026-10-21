@@ -482,7 +482,7 @@ export function creerPartie({ format = 'spin-rush', joueurs, graine, horloge = D
         elimine: s.elimine && s.tapisDepart === 0,
         aTapis: dansLeCoup(s) && s.tapis === 0,
         position: main.positions.get(s.siege) ?? null,
-        cartes: k === pourSiege || (main.terminee && main.abattage && dansLeCoup(s)) ? [...s.cartes] : null,
+        cartes: k === pourSiege || (main.terminee && main.abattage && !s.couche && s.tapisDepart > 0) ? [...s.cartes] : null,
         net: main.terminee ? s.tapis - s.tapisDepart : null,
       })),
       actions: main.aQui >= 0 ? actionsPossibles(main.aQui) : null,

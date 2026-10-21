@@ -1,47 +1,14 @@
 // La page : trois outils branchés sur le même moteur que la ligne de commande.
 
-import { RANGS, SYMBOLES, NOMS_RANGS, carte, rangDe, couleurDe, afficherCartes } from '../src/moteur/cartes.js';
+import { SYMBOLES, NOMS_RANGS, carte, rangDe, couleurDe, afficherCartes } from '../src/moteur/cartes.js';
 import { lireRange, decrireRange } from '../src/moteur/ranges.js';
 import { calculerEquite } from '../src/moteur/equite.js';
 import { deciderSuivre, analyserTapis } from '../src/strategie/decision.js';
 import { lireHistorique } from '../src/analyse/historique.js';
 import { analyserSession } from '../src/analyse/detection.js';
-import { pct, montant, signe } from '../src/moteur/format.js';
-
-const NOMS_COULEURS = ['trèfle', 'carreau', 'cœur', 'pique'];
-const $ = (id) => document.getElementById(id);
-
-/** Crée un élément : el('p', { class: 'aide' }, 'texte', autreElement). Jamais d'innerHTML. */
-function el(nom, attributs = {}, ...enfants) {
-  const e = document.createElement(nom);
-  for (const [k, v] of Object.entries(attributs)) {
-    if (v === undefined || v === null || v === false) continue;
-    if (k === 'class') e.className = v;
-    else if (k === 'style') e.style.cssText = v;
-    else e.setAttribute(k, v === true ? '' : v);
-  }
-  for (const enfant of enfants.flat()) {
-    if (enfant === null || enfant === undefined || enfant === false) continue;
-    e.append(enfant instanceof Node ? enfant : String(enfant));
-  }
-  return e;
-}
-
-const estRouge = (c) => couleurDe(c) === 1 || couleurDe(c) === 2;
-const lettreRang = (c) => (RANGS[rangDe(c)] === 'T' ? '10' : RANGS[rangDe(c)]);
-
-function visuelCarte(c) {
-  return el('span', { class: `carte ${estRouge(c) ? 'rouge' : 'noir'}` }, el('b', {}, lettreRang(c)), el('i', {}, SYMBOLES[couleurDe(c)]));
-}
-
-/** Des cartes dans une phrase : « A♥ K♦ ». */
-function cartesEnLigne(cartes) {
-  return el(
-    'span',
-    { class: 'carte-texte' },
-    cartes.map((c) => el('span', { class: estRouge(c) ? 'rouge' : 'noir' }, lettreRang(c) + SYMBOLES[couleurDe(c)])),
-  );
-}
+import { pct, montant, signe, court } from '../src/moteur/format.js';
+import { brancherEntrainement } from './entrainement.js';
+import { $, el, NOMS_COULEURS, estRouge, lettreRang, visuelCarte, chiffres } from './ui.js';
 
 function debounce(fn, ms) {
   let minuterie;
@@ -208,14 +175,6 @@ function jauge(equite, requise) {
     { class: 'jauge' },
     piste,
     el('div', { class: 'legende' }, el('span', {}, `Ton équité ${pct(equite)}`), requise > 0 ? el('span', {}, `Il faut ${pct(requise)}`) : null),
-  );
-}
-
-function chiffres(lignes) {
-  return el(
-    'dl',
-    { class: 'chiffres' },
-    lignes.map(([dt, dd, ton]) => el('div', {}, el('dt', {}, dt), el('dd', { class: ton ?? null }, dd))),
   );
 }
 
@@ -569,8 +528,53 @@ function brancherSession() {
         ),
       );
     }
+    blocs.push(...sectionsRythmeEtAdversaires(r));
     if (ignorees.length) blocs.push(listeIgnorees(ignorees));
     resultat.replaceChildren(...blocs);
+  }
+
+  function sectionsRythmeEtAdversaires(r) {
+    const blocs = [];
+    const ry = r.rythme;
+    if (ry?.disponible) {
+      blocs.push(
+        el('p', { class: 'etiquette' }, 'Rythme et temps de jeu'),
+        chiffres([
+          ['Sessions', String(ry.sessions.length)],
+          ['Durée totale', `${court(ry.dureeTotaleMin)} min`],
+          ['Mains par heure', court(ry.mainsParHeure)],
+          ['Secondes par main', court(ry.cadence?.secondesParMain)],
+          ['Multi-table', ry.multiTable?.detecte ? `jusqu’à ${ry.multiTable.tablesMax}` : 'non'],
+        ]),
+      );
+      if (ry.tilt?.conclusion) blocs.push(el('p', { class: ry.tilt.detecte ? 'erreur' : 'aide' }, ry.tilt.conclusion));
+      for (const sig of ry.tilt?.signaux ?? []) blocs.push(el('p', { class: 'aide' }, `· ${sig.texte}`));
+    } else if (ry?.avertissements?.length) {
+      blocs.push(el('p', { class: 'aide' }, ry.avertissements.join(' ')));
+    }
+    const adv = r.adversaires?.adversaires ?? [];
+    if (adv.length) {
+      blocs.push(
+        tableau(
+          'Tes adversaires',
+          ['Joueur', 'Mains', 'VPIP', 'PFR', 'Agression', 'Type', 'Conseil'],
+          adv.map((a) => [
+            a.nom,
+            [String(a.mains), 'n'],
+            [pct(a.vpip, 0), 'n'],
+            [pct(a.pfr, 0), 'n'],
+            [Number.isFinite(a.af) ? court(a.af) : '—', 'n'],
+            a.type?.nom ?? 'Pas assez de mains',
+            a.type?.conseil ?? '—',
+          ]),
+        ),
+      );
+    }
+    const absurdes = r.adversaires?.nImporteQuoi ?? [];
+    if (absurdes.length) {
+      blocs.push(el('p', { class: 'etiquette' }, 'Ils font n’importe quoi'), el('ul', { class: 'raisons' }, absurdes.map((x) => el('li', {}, x.texte))));
+    }
+    return blocs;
   }
 
   function cartesTexte(texte) {
@@ -611,25 +615,38 @@ function brancherSession() {
     );
   }
 
-  // L'exemple livré avec l'outil, analysé tout de suite.
-  fetch('exemples/session-exemple.txt')
-    .then((rep) => (rep.ok ? rep.text() : Promise.reject(new Error(`HTTP ${rep.status}`))))
-    .then((texte) => {
-      if (!zone.value) zone.value = texte;
+  function chargerExemple(fichier) {
+    return fetch(fichier)
+      .then((rep) => (rep.ok ? rep.text() : Promise.reject(new Error(`HTTP ${rep.status}`))))
+      .then((texte) => {
+        zone.value = texte;
+        $('session-hero').value = '';
+        analyser();
+      })
+      .catch((e) => {
+        resultat.replaceChildren(el('p', { class: 'aide' }, `Colle tes mains puis touche « Analyser ». (Exemple indisponible : ${e.message}.)`));
+      });
+  }
+  $('session-exemple-spin').addEventListener('click', () => chargerExemple('exemples/spin-rush-exemple.txt'));
+  $('session-exemple-cash').addEventListener('click', () => chargerExemple('exemples/session-exemple.txt'));
+  chargerExemple('exemples/spin-rush-exemple.txt');
+
+  return {
+    analyserTexte(texte, hero) {
+      zone.value = texte;
+      $('session-hero').value = hero ?? '';
       analyser();
-    })
-    .catch((e) => {
-      resultat.replaceChildren(el('p', { class: 'aide' }, `Colle tes mains puis touche « Analyser ». (Exemple indisponible : ${e.message}.)`));
-    });
+    },
+  };
 }
 
 /* ------------------------------------------------------------------ */
 /* Onglets                                                             */
 /* ------------------------------------------------------------------ */
 
-const VUES = ['decision', 'tapis', 'session'];
+const VUES = ['entrainement', 'decision', 'tapis', 'session'];
 function montrer(vue) {
-  const choisie = VUES.includes(vue) ? vue : 'decision';
+  const choisie = VUES.includes(vue) ? vue : 'entrainement';
   for (const v of VUES) $(`vue-${v}`).hidden = v !== choisie;
   for (const a of document.querySelectorAll('nav.onglets a')) {
     if (a.dataset.vue === choisie) a.setAttribute('aria-current', 'page');
@@ -652,5 +669,11 @@ window.addEventListener('hashchange', () => montrer(location.hash.slice(1)));
 
 brancherDecision();
 brancherTapis();
-brancherSession();
+const session = brancherSession();
+brancherEntrainement({
+  envoyerVersAnalyse(texte, hero) {
+    session.analyserTexte(texte, hero);
+    montrer('session');
+  },
+});
 montrer(location.hash.slice(1));

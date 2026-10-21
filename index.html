@@ -259,6 +259,49 @@ td.n { font-family: var(--police-chiffres); font-variant-numeric: tabular-nums; 
 .positif { color: var(--bon); }
 .negatif { color: var(--mauvais); }
 
+/* Entraînement */
+select { font: 500 0.95rem var(--police-texte); color: var(--encre); background: var(--fond); border: 1px solid var(--trait); border-radius: 8px; padding: 8px 10px; width: 100%; min-width: 0; }
+label.case { display: inline-flex; gap: 8px; align-items: center; font-size: 0.9rem; color: var(--discret); }
+.table-jeu { display: grid; gap: 14px; }
+.sieges { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.siege { border: 1px solid var(--trait); border-radius: 12px; padding: 10px; display: grid; gap: 8px; background: var(--fond); min-width: 0; }
+.siege.parle { border-color: var(--tapis); box-shadow: 0 0 0 3px var(--tapis-doux); }
+.siege.moi { background: var(--tapis-doux); }
+.siege.eteint { opacity: 0.55; }
+.siege-tete { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.siege-tete strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; }
+.puce { font: 700 0.7rem var(--police-titre); letter-spacing: 0.04em; border: 1px solid var(--trait); border-radius: 999px; padding: 2px 7px; color: var(--discret); white-space: nowrap; }
+.puce.risque-1 { color: var(--bon); border-color: currentColor; }
+.puce.risque-2 { color: var(--tapis); border-color: currentColor; }
+.puce.risque-3 { color: var(--limite); border-color: currentColor; }
+.puce.risque-4 { color: var(--mauvais); border-color: currentColor; }
+.siege-cartes, .tableau-cartes { display: flex; gap: 6px; min-height: 58px; }
+.siege-cartes .carte, .tableau-cartes .carte { width: 42px; height: 58px; border-radius: 6px; border: 1px solid var(--face-trait); background: var(--face); align-content: center; }
+.carte.dos { background: repeating-linear-gradient(45deg, var(--tapis) 0 4px, var(--tapis-doux) 4px 8px); }
+.carte.vide { border-style: dashed; background: transparent; }
+.siege-pied { display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.85rem; color: var(--discret); }
+.siege-pied .jetons { font: 600 0.95rem var(--police-chiffres); color: var(--encre); }
+.siege-pied .etat { font-weight: 600; }
+.centre { display: grid; gap: 6px; justify-items: start; border-top: 1px solid var(--trait); padding-top: 12px; }
+.centre .pot { margin: 0; font: 600 1.1rem var(--police-chiffres); }
+.centre p { margin: 0; }
+.a-toi { margin: 0; display: flex; gap: 12px; align-items: baseline; font: 700 1.05rem var(--police-titre); }
+.chrono { font: 500 0.95rem var(--police-chiffres); color: var(--limite); }
+.bouton.action, button.action { font: 700 0.95rem var(--police-titre); border-radius: 9px; padding: 10px 16px; cursor: pointer; border: 1px solid var(--trait); background: var(--surface); color: var(--encre); }
+button.action.attaque { background: var(--tapis); color: var(--surface); border-color: var(--tapis); }
+button.action.tapis { border-color: var(--mauvais); color: var(--mauvais); }
+.coach { border: 1px dashed var(--trait); border-radius: 10px; padding: 10px; display: grid; gap: 4px; }
+.coach p { margin: 0; font-size: 0.9rem; }
+.retour { display: grid; gap: 8px; }
+.mot-petit { margin: 0; font: 800 1.25rem var(--police-titre); }
+.mot-petit.bon { color: var(--bon); } .mot-petit.mauvais { color: var(--mauvais); } .mot-petit.limite { color: var(--limite); } .mot-petit.neutre { color: var(--discret); }
+.quatre { display: grid; gap: 6px; }
+.avis { border: 1px solid var(--trait); border-radius: 8px; padding: 6px 10px; }
+.avis.accord { border-color: var(--bon); }
+.avis summary { font-size: 0.9rem; color: var(--encre); }
+.resultat-main { margin: 0; font-weight: 600; }
+#ent-retour:empty { display: none; }
+
 footer.pied { color: var(--discret); font-size: 0.82rem; max-width: 75ch; }
 footer.pied p { margin: 0 0 6px; }
 
@@ -269,8 +312,8 @@ footer.pied p { margin: 0 0 6px; }
   .emplacement .carte i { font-size: 0.95rem; }
   .separateur { margin: 0 1px; }
   label.champ.etroit { width: calc(50% - 6px); }
-  nav.onglets { width: 100%; }
-  nav.onglets a { flex: 1; text-align: center; padding: 7px 6px; font-size: 0.86rem; }
+  nav.onglets { width: 100%; flex-wrap: wrap; }
+  nav.onglets a { flex: 1 1 40%; text-align: center; padding: 7px 6px; font-size: 0.86rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   .jauge .rempli, .jauge .repere { transition: none; }
@@ -284,14 +327,43 @@ footer.pied p { margin: 0 0 6px; }
       <p class="sous-titre">Hold'em No Limit : ton équité contre la range adverse, la cote du pot, et le verdict. Les montants sont dans l'unité que tu veux, euros, jetons ou grosses blindes.</p>
     </div>
     <nav class="onglets" aria-label="Outils">
+      <a href="#entrainement" data-vue="entrainement">Entraînement</a>
       <a href="#decision" data-vue="decision">Suivre ou pas</a>
       <a href="#tapis" data-vue="tapis">Tapis ou pas</a>
       <a href="#session" data-vue="session">Analyse de session</a>
     </nav>
   </header>
 
+  <!-- Entraînement contre les bots -->
+  <section class="vue" id="vue-entrainement" aria-label="Entraînement contre les bots">
+    <div class="panneau">
+      <div class="groupe" id="ent-reglages" hidden>
+        <p class="etiquette">La partie</p>
+        <div class="ligne">
+          <label class="champ" style="flex: 2 1 16rem">Format
+            <select id="ent-format"></select>
+          </label>
+          <label class="champ" style="flex: 1 1 8rem">Ton pseudo
+            <input type="text" id="ent-nom" value="Angelituwu" autocomplete="off" spellcheck="false">
+          </label>
+        </div>
+        <div class="ligne" id="ent-profils"></div>
+        <div class="ligne">
+          <label class="case"><input type="checkbox" id="ent-coach"> Montrer le coach avant que je joue</label>
+          <button type="button" class="bouton" id="ent-lancer">Lancer la partie</button>
+        </div>
+      </div>
+      <div class="table-jeu" id="ent-table"><p class="aide">Choisis le format et le style de chaque bot, puis lance la partie. Chacune de tes décisions est chronométrée et jugée par les quatre profils.</p></div>
+      <div class="groupe" id="ent-actions" aria-live="polite"></div>
+    </div>
+    <div class="panneau verdict-panneau">
+      <div id="ent-retour" aria-live="polite"></div>
+      <div class="groupe" id="ent-bilan"></div>
+    </div>
+  </section>
+
   <!-- Suivre ou pas -->
-  <section class="vue" id="vue-decision" aria-label="Suivre ou se coucher">
+  <section class="vue" id="vue-decision" aria-label="Suivre ou se coucher" hidden>
     <div class="panneau">
       <div class="groupe">
         <p class="etiquette">Tes cartes et le tableau</p>
@@ -406,7 +478,7 @@ footer.pied p { margin: 0 0 6px; }
     <div class="panneau">
       <div class="groupe">
         <p class="etiquette">Ton historique de mains</p>
-        <p class="aide">Colle le texte de tes mains, ou charge le fichier exporté. Formats lus : PokerStars, Winamax et équivalents en français. L'exemple ci-dessous est une session fictive.</p>
+        <p class="aide">Colle le texte de tes mains, ou charge le fichier exporté. Formats lus : PokerStars, Winamax et équivalents en français. Les exemples sont des sessions fictives ; les parties de l'onglet Entraînement s'analysent ici d'un clic.</p>
         <textarea id="session-texte" spellcheck="false" aria-label="Historique de mains" placeholder="PokerStars Hand #… / Winamax Poker - … (une main après l'autre)"></textarea>
       </div>
       <div class="ligne">
@@ -420,6 +492,10 @@ footer.pied p { margin: 0 0 6px; }
           <input type="file" id="session-fichier" accept=".txt,text/plain" hidden>
         </label>
         <button type="button" class="bouton" id="session-analyser" style="align-self: end">Analyser</button>
+      </div>
+      <div class="pastilles">
+        <button type="button" id="session-exemple-spin">Exemple Spin &amp; Rush</button>
+        <button type="button" id="session-exemple-cash">Exemple cash game</button>
       </div>
     </div>
     <div class="panneau" id="session-resultat" aria-live="polite"></div>

@@ -10,6 +10,7 @@ JavaScript natif, zéro dépendance, Node 18 ou plus récent.
 
 | Outil | Question | Comment |
 |---|---|---|
+| **Entraînement** | « Est-ce que je joue bien, et est-ce que je fais n'importe quoi ? » | Une table Spin & Rush (3 joueurs, 500 jetons, blindes qui montent), tête-à-tête ou cash 6-max contre des bots à 4 profils. Chaque décision est chronométrée et jugée par les 4 profils : bon, choix de style, erreur, n'importe quoi. Bilan : score de discipline, temps de décision, style le plus proche, tilt. |
 | **Suivre ou pas** | « Je paie 6 dans un pot de 12 avec A♥K♥ sur Q♥7♥2♣, c'est rentable ? » | Équité exacte (ou Monte-Carlo) contre une range, comparée à la cote du pot ; EV du call, rake et gains implicites compris. |
 | **Tapis ou pas** | « 10 bb en petite blinde avec A7o, je pousse ? » | Probabilité que tout le monde se couche, équité quand on est suivi, espérance du tapis. Fait pour les tournois et les Twister. |
 | **Analyse de session** | « Je perds parce que je joue mal ou parce que je n'ai pas de chance ? » | VPIP, PFR, agression, abattages, résultats par position ; fuites détectées ; chance sur les tapis (attendu contre réel) ; calls et abandons contraires à la cote. |
@@ -17,7 +18,7 @@ JavaScript natif, zéro dépendance, Node 18 ou plus récent.
 ## Démarrer
 
 ```bash
-npm test                 # 41 tests, environ 1 seconde
+npm test                 # 78 tests
 npm run web              # la page sur http://localhost:8080
 node bin/poker.js aide   # la ligne de commande
 ```
@@ -46,6 +47,20 @@ node bin/poker.js tapis "A7o" --pot 1.5 --poste 0.5 --poste-adverse 1 --tapis 9.
 node bin/poker.js analyser exemples/session-exemple.txt
 node bin/poker.js analyser mes-mains.txt --hero MonPseudo --range-adverse "25%" --json
 ```
+
+## Le bot, quatre profils
+
+| Profil | Risque | Caractère |
+|---|---|---|
+| Prudent | 1/4 | Ne met son tapis qu'avec le meilleur jeu ; exige 5 points d'équité au-dessus de la cote. |
+| Solide | 2/4 | Régulier serré et agressif : peu de mains, jouées fort. |
+| Agressif | 3/4 | Ouvre large, relance beaucoup, semi-bluffe ses tirages. |
+| Sans peur | 4/4 | Croit à la fold equity, n'a jamais peur d'engager son tapis quand la cote est bonne, gros bluffs. |
+
+Chaque bot ne voit que ce qu'un joueur voit : il estime la range de chaque
+adversaire d'après ses actions, calcule son équité et décide selon ses seuils
+(`src/strategie/`). Il explique chaque décision. Il ne joue que dans cet
+outil : il ne se branche sur aucun logiciel de poker.
 
 ## La notation des ranges
 
@@ -120,9 +135,12 @@ C'est un outil d'étude, pour préparer ses décisions et relire ses sessions.
 ## Organisation
 
 ```
-src/          le moteur (cartes, évaluateur, ranges, équité, décision, historique, détection)
+src/moteur/     cartes, évaluateur, ranges, équité
+src/strategie/  décision (cote, tapis), lecture du coup, profils, bot
+src/jeu/        la table d'entraînement et les bots qui y jouent
+src/analyse/    historiques, détection, rythme et tilt, adversaires, entraînement
 bin/poker.js  la ligne de commande
-index.html    la page ; web/app.js la branche sur le moteur
+index.html    la page ; web/ (app.js, entrainement.js, ui.js) la branche sur le moteur
 scripts/      serveur local, génération du classement
 exemples/     une session fictive pour essayer l'analyse
 test/         node --test
