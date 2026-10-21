@@ -29,6 +29,59 @@ export function lireMontant(texte) {
   return Number.isFinite(n) ? n : NaN;
 }
 
+/**
+ * L'heure d'une main lue dans son en-tête : « 2026/10/20 21:14:03 CET »,
+ * « 2026-10-20 21:14:03 UTC », « 20/10/2026 21:30:00 », « 20/10/2026 21h30 ».
+ *
+ * On garde l'heure telle qu'elle est écrite (heure locale de la salle), sans
+ * conversion de fuseau : les millisecondes sont celles de Date.UTC sur les
+ * composants lus, donc getUTCHours() rend l'heure affichée par la salle.
+ * La première date de la ligne gagne (PokerStars en écrit une deuxième, en ET).
+ *
+ * @returns {{ ms: number, fuseau: string|null } | null}
+ */
+export function lireHorodatage(texte) {
+  const s = String(texte ?? '');
+  let composants = null;
+  let fin = 0;
+  const amj = /(\d{4})[\/.-](\d{1,2})[\/.-](\d{1,2})[\sT]+(\d{1,2})[:h](\d{2})(?::(\d{2}))?/.exec(s);
+  const jma = /(\d{1,2})[\/.-](\d{1,2})[\/.-](\d{4})(?:\s+(?:à\s+)?|\s*-\s*|,\s*)(\d{1,2})[:h](\d{2})(?::(\d{2}))?/.exec(s);
+  // La date la plus à gauche de la ligne.
+  const choisie = amj && (!jma || amj.index <= jma.index) ? 'amj' : jma ? 'jma' : null;
+  if (choisie === 'amj') {
+    composants = { a: amj[1], mo: amj[2], j: amj[3], h: amj[4], mi: amj[5], se: amj[6] };
+    fin = amj.index + amj[0].length;
+  } else if (choisie === 'jma') {
+    composants = { a: jma[3], mo: jma[2], j: jma[1], h: jma[4], mi: jma[5], se: jma[6] };
+    fin = jma.index + jma[0].length;
+  }
+  if (!composants) return null;
+  const [a, mo, j, h, mi, se] = ['a', 'mo', 'j', 'h', 'mi', 'se'].map((k) => Number(composants[k] ?? 0));
+  if (mo < 1 || mo > 12 || j < 1 || j > 31 || h > 23 || mi > 59 || se > 59) return null;
+  const ms = Date.UTC(a, mo - 1, j, h, mi, se);
+  // Le 31 février n'existe pas : Date.UTC le décalerait au 3 mars.
+  const verif = new Date(ms);
+  if (verif.getUTCDate() !== j || verif.getUTCMonth() !== mo - 1) return null;
+  const fuseau = /^\s*\[?([A-Z]{2,5})\b/.exec(s.slice(fin))?.[1] ?? null;
+  return { ms, fuseau };
+}
+
+const ROMAINS = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
+
+/** « XIV » → 14, « 3 » → 3, NaN sinon. */
+export function lireNiveau(texte) {
+  const t = String(texte ?? '').trim().toUpperCase();
+  if (/^\d+$/.test(t)) return Number(t);
+  if (!/^[IVXLCDM]+$/.test(t)) return NaN;
+  let total = 0;
+  for (let i = 0; i < t.length; i++) {
+    const v = ROMAINS[t[i]];
+    const suivant = ROMAINS[t[i + 1]] ?? 0;
+    total += v < suivant ? -v : v;
+  }
+  return total;
+}
+
 const ENTETE =
   /^(PokerStars|Winamax|Betclic|PMU|Unibet|iPoker|Poker\s+Hand|Hand\s*#)|Hand\s*#|HandId|(Main|Coup|Partie)\s*(n°|#)/i;
 
@@ -138,7 +191,18 @@ export function lireMain(texte) {
     rake: NaN,
     abattage: false,
     doubleTirage: false,
+    horodatage: null, // ms (heure de la salle, voir lireHorodatage) ou null
+    fuseau: null,
+    table: null,
+    tailleTable: NaN, // « 3-max » → 3
+    idTournoi: (/(?:Tournament|Tournoi)\s*(?:#|n°)\s*(\d+)/i.exec(entete))?.[1] ?? null,
+    niveau: lireNiveau((/(?:Level|Niveau)\s+([IVXLCDM]+|\d+)\b/i.exec(entete))?.[1]),
   };
+  const heure = lireHorodatage(entete);
+  if (heure) {
+    main.horodatage = heure.ms;
+    main.fuseau = heure.fuseau;
+  }
 
   const blindes = /\(([^()\/]+)\/([^()\/]+?)(?:\s*-[^()]*)?\)/.exec(entete);
   if (blindes) {
@@ -173,6 +237,13 @@ export function lireMain(texte) {
 
     const bouton = !vuMarqueur && /Seat\s*#?\s*(\d+)\s+is the button|Si[eè]ge\s*#?\s*(\d+)\s+est (?:le )?bouton/i.exec(ligne);
     if (bouton) main.siegeBouton = Number(bouton[1] ?? bouton[2]);
+
+    const table = !vuMarqueur && /^Table\s*:?\s*'([^']+)'(?:\s+(\d+)-max)?/i.exec(ligne);
+    if (table) {
+      main.table = table[1].trim();
+      if (table[2]) main.tailleTable = Number(table[2]);
+      continue;
+    }
 
     const siege = /^(?:Seat|Si[eè]ge)\s+(\d+)\s*:\s*(.+?)\s+\(([^)]*)\)/i.exec(ligne);
     if (siege && !vuMarqueur && rue === 'preflop' && main.actions.length === 0) {
@@ -299,13 +370,17 @@ function rejouer(main) {
   let rueCourante = 'preflop';
   const tableauParRue = { preflop: [], flop: main.tableau.slice(0, 3), turn: main.tableau.slice(0, 4), river: main.tableau.slice(0, 5) };
   const decisions = [];
+  // Chaque mise, relance ou call de chaque joueur, avec ce qu'il savait à ce moment-là.
+  const mises = [];
   let derniereRueAvecMise = 'preflop';
   let tapisEngage = false;
+  let agresseur = null;
 
   for (const a of main.actions) {
     if (a.rue !== rueCourante) {
       rueCourante = a.rue;
       parRue = new Map();
+      agresseur = null;
     }
     const deja = parRue.get(a.joueur) ?? 0;
     const niveau = Math.max(0, ...parRue.values());
@@ -329,6 +404,31 @@ function rejouer(main) {
           finDesMises,
         });
       }
+    }
+
+    if (a.type === 'suit' || a.type === 'mise' || a.type === 'relance') {
+      const aSuivre = arrondir(Math.max(0, Math.min(niveau - deja, restant)));
+      const ajoutPrevu = a.type === 'relance' ? arrondir(a.total - deja) : a.montant;
+      const autres = [...participants].filter((nom) => nom !== a.joueur && !couche.has(nom));
+      mises.push({
+        joueur: a.joueur,
+        rue: a.rue,
+        type: a.type,
+        tableau: tableauParRue[a.rue] ?? [],
+        pot: sommer(investi),
+        aSuivre,
+        montant: ajoutPrevu,
+        agresseur: a.type === 'suit' ? agresseur : null,
+        tapisDepart: tapisDepart.get(a.joueur) ?? NaN,
+        // L'action met-elle le joueur à tapis ?
+        tapis: Boolean(a.tapis) || ajoutPrevu >= restant - 1e-9,
+        // Pour un call : clôt-il toute mise future ?
+        finDesMises:
+          a.type === 'suit' &&
+          (ajoutPrevu >= restant - 1e-9 ||
+            (autres.length > 0 && autres.every((nom) => (tapisDepart.get(nom) ?? 0) - (investi.get(nom) ?? 0) <= 1e-9))),
+      });
+      if (a.type !== 'suit') agresseur = a.joueur;
     }
 
     let ajout = 0;
@@ -370,9 +470,36 @@ function rejouer(main) {
     investi: Object.fromEntries(investi),
     restants,
     decisions,
+    mises,
     derniereRueAvecMise,
     tapisEngage,
     positionHero: siegeHero !== undefined && Number.isFinite(main.siegeBouton) ? positions.get(siegeHero) ?? null : null,
+  };
+}
+
+/**
+ * Ce qu'un joueur a fait dans une main : la base des VPIP, PFR, agression et
+ * abattages, pour le héros comme pour chaque adversaire.
+ */
+export function statsJoueur(main, nom) {
+  const siennes = main.actions.filter((a) => a.joueur === nom);
+  const preflop = siennes.filter((a) => a.rue === 'preflop' && a.type !== 'poste');
+  const postflop = siennes.filter((a) => a.rue !== 'preflop');
+  const coucheAvantFlop = preflop.some((a) => a.type === 'couche');
+  const participe = siennes.length > 0;
+  const vuFlop = participe && !coucheAvantFlop && main.tableau.length >= 3;
+  const abattage = participe && main.restants.includes(nom) && main.restants.length >= 2;
+  const gains = main.gains[nom] ?? 0;
+  return {
+    participe,
+    vpip: preflop.some((a) => a.type === 'suit' || a.type === 'relance' || a.type === 'mise'),
+    pfr: preflop.some((a) => a.type === 'relance' || a.type === 'mise'),
+    vuFlop,
+    abattage,
+    abattageGagne: abattage && gains > 0,
+    agressions: postflop.filter((a) => a.type === 'mise' || a.type === 'relance').length,
+    appels: postflop.filter((a) => a.type === 'suit').length,
+    resultat: arrondir(gains - (main.investi[nom] ?? 0)),
   };
 }
 

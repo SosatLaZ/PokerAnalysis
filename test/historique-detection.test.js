@@ -45,6 +45,11 @@ test('une main rejouée : investissements, gains, décisions', () => {
   assert.equal(premiere.investi.Hero, 1.9);
   assert.equal(premiere.gains.Ines, 3.8);
   assert.equal(premiere.positionHero, 'CO');
+  assert.equal(premiere.table, 'Andromeda II');
+  assert.equal(premiere.tailleTable, 6);
+  assert.equal(new Date(premiere.horodatage).toISOString(), '2026-10-20T21:14:03.000Z');
+  assert.equal(premiere.idTournoi, null);
+  assert.equal(winamax.table, 'Nice 05');
   assert.deepEqual(premiere.decisions.map((d) => [d.rue, d.action, d.pot, d.aSuivre]), [['turn', 'suit', 2.65, 1.2]]);
 
   // Tapis : la mise non suivie revient à Margot.

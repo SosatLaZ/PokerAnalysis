@@ -10,6 +10,11 @@
 //      une range supposée, comparée à la cote du pot. On ne juge que les coups
 //      où ce calcul a un sens : après le flop, ou quand l'appel clôt les mises.
 //
+//   4. Le rythme (rythme.js) : sessions, temps par main, multi-table,
+//      fatigue, et le tilt après les grosses pertes.
+//   5. Les adversaires (adversaires.js) : type de joueur, conseil, et les
+//      coups où ils font n'importe quoi.
+//
 // Tout ce qui dépend d'une hypothèse (la range supposée, les seuils de
 // fuite pour du 6-max) le dit dans le rapport.
 
@@ -17,6 +22,9 @@ import { calculerEquite } from '../moteur/equite.js';
 import { lireRange, retirerBloquees } from '../moteur/ranges.js';
 import { afficherCartes } from '../moteur/cartes.js';
 import { pct, montant, signe } from '../moteur/format.js';
+import { statsJoueur } from './historique.js';
+import { analyserRythme, formaterRythme } from './rythme.js';
+import { analyserAdversaires, formaterAdversaires } from './adversaires.js';
 
 export const SEUILS_6MAX = {
   vpipMax: 32,
@@ -34,30 +42,6 @@ const virgule = (x) => String(x).replace('.', ',');
 
 function nouvelleStat() {
   return { mains: 0, vpip: 0, pfr: 0, vuFlop: 0, abattages: 0, abattagesGagnes: 0, agressions: 0, appels: 0, resultat: 0, resultatBb: 0, mainsBb: 0 };
-}
-
-/** Les chiffres du héros sur une main. */
-function statsDeMain(main) {
-  const h = main.hero;
-  const siennes = main.actions.filter((a) => a.joueur === h);
-  const preflop = siennes.filter((a) => a.rue === 'preflop' && a.type !== 'poste');
-  const postflop = siennes.filter((a) => a.rue !== 'preflop');
-  const coucheAvantFlop = preflop.some((a) => a.type === 'couche');
-  const vuFlop = !coucheAvantFlop && main.tableau.length >= 3;
-  const encoreLa = main.restants.includes(h);
-  const abattage = encoreLa && main.restants.length >= 2;
-  const gains = main.gains[h] ?? 0;
-  const resultat = gains - (main.investi[h] ?? 0);
-  return {
-    vpip: preflop.some((a) => a.type === 'suit' || a.type === 'relance' || a.type === 'mise'),
-    pfr: preflop.some((a) => a.type === 'relance' || a.type === 'mise'),
-    vuFlop,
-    abattage,
-    abattageGagne: abattage && gains > 0,
-    agressions: postflop.filter((a) => a.type === 'mise' || a.type === 'relance').length,
-    appels: postflop.filter((a) => a.type === 'suit').length,
-    resultat,
-  };
 }
 
 function ajouter(stat, s, main) {
@@ -155,6 +139,8 @@ export function analyserSession(mains, options = {}) {
       parPosition: {},
       tapis: { mains: [], attendu: 0, reel: 0, chance: 0 },
       decisions: { evaluees: 0, erreurs: [] },
+      rythme: null,
+      adversaires: { hero: null, adversaires: [], nImporteQuoi: [] },
     };
   }
   if (heros.size > 1 && !options.hero) {
@@ -169,7 +155,7 @@ export function analyserSession(mains, options = {}) {
   let evaluees = 0;
 
   for (const main of siennes) {
-    const s = statsDeMain(main);
+    const s = statsJoueur(main, hero);
     ajouter(total, s, main);
     if (main.positionHero) ajouter((parPosition[main.positionHero] ??= nouvelleStat()), s, main);
 
@@ -238,6 +224,26 @@ export function analyserSession(mains, options = {}) {
     });
   }
 
+  const rythme = analyserRythme(siennes, { hero, ...options.rythme });
+  if (rythme.tilt?.detecte) {
+    fuites.unshift({
+      gravite: 'forte',
+      titre: 'Tilt après les grosses pertes',
+      detail: rythme.tilt.signaux
+        .filter((x) => x.genre !== 'resultat')
+        .map((x) => x.texte)
+        .join(' '),
+    });
+  }
+  const adversaires = analyserAdversaires(siennes, { hero, graine, ...options.adversaires });
+  if (adversaires.nImporteQuoi.length > 0) {
+    fuites.push({
+      gravite: 'info',
+      titre: `${adversaires.nImporteQuoi.length} coup${adversaires.nImporteQuoi.length > 1 ? 's' : ''} absurde${adversaires.nImporteQuoi.length > 1 ? 's' : ''} chez tes adversaires`,
+      detail: 'Des tapis avec des mains faibles ou des calls sans la cote : ces joueurs-là se paient pour la valeur. Détail dans « Adversaires ».',
+    });
+  }
+
   return {
     hero,
     nbMains: siennes.length,
@@ -246,6 +252,8 @@ export function analyserSession(mains, options = {}) {
     parPosition: Object.fromEntries(Object.entries(parPosition).map(([p, s]) => [p, ratios(s)])),
     tapis: { mains: tapis, ...sommeTapis },
     decisions: { evaluees, erreurs, rangeAdverse },
+    rythme,
+    adversaires,
     avertissements,
   };
 }
@@ -351,5 +359,9 @@ export function formaterRapport(r) {
       `  #${e.id} ${e.rue} : ${e.action} avec ${e.main}${e.tableau ? ` sur ${e.tableau}` : ''} — équité ${pct(e.equite)}, il fallait ${pct(e.requise)} (${montant(e.aSuivre)} pour ${montant(e.pot)})`,
     );
   }
+  const rythme = formaterRythme(r.rythme);
+  if (rythme.length) l.push('', ...rythme);
+  const adversaires = formaterAdversaires(r.adversaires);
+  if (adversaires.length) l.push('', ...adversaires);
   return l.join('\n');
 }

@@ -1,0 +1,971 @@
+PokerStars Hand #250100000001: Tournament #3400000001, €0.20 EUR Hold'em No Limit - Level I (10/20) - 2026/10/21 20:05:10 CET
+Table '3400000001 1' 3-max Seat #3 is the button
+Seat 1: Angelituwu (500 in chips)
+Seat 2: bec (500 in chips)
+Seat 3: SosoCourt (500 in chips)
+Angelituwu: posts small blind 10
+bec: posts big blind 20
+*** HOLE CARDS ***
+Dealt to Angelituwu [Kd Js]
+SosoCourt: folds
+Angelituwu: calls 10
+bec: checks
+*** FLOP *** [9d 7d Ac]
+Angelituwu: checks
+bec: bets 20
+Angelituwu: folds
+Uncalled bet (20) returned to bec
+bec collected 40 from pot
+bec: doesn't show hand
+*** SUMMARY ***
+Total pot 40 | Rake 0
+Board [9d 7d Ac]
+Seat 1: Angelituwu (small blind) folded
+Seat 2: bec (big blind) collected (40)
+Seat 3: SosoCourt (button) folded
+
+
+
+PokerStars Hand #250100000002: Tournament #3400000001, €0.20 EUR Hold'em No Limit - Level I (10/20) - 2026/10/21 20:05:48 CET
+Table '3400000001 1' 3-max Seat #1 is the button
+Seat 1: Angelituwu (480 in chips)
+Seat 2: bec (520 in chips)
+Seat 3: SosoCourt (500 in chips)
+bec: posts small blind 10
+SosoCourt: posts big blind 20
+*** HOLE CARDS ***
+Dealt to Angelituwu [7c 2h]
+Angelituwu: folds
+bec: calls 10
+SosoCourt: checks
+*** FLOP *** [5h 5c Kd]
+bec: checks
+SosoCourt: bets 20
+bec: folds
+Uncalled bet (20) returned to SosoCourt
+SosoCourt collected 40 from pot
+SosoCourt: doesn't show hand
+*** SUMMARY ***
+Total pot 40 | Rake 0
+Board [5h 5c Kd]
+Seat 1: Angelituwu (button) folded
+Seat 2: bec (small blind) folded
+Seat 3: SosoCourt (big blind) collected (40)
+
+
+
+PokerStars Hand #250100000003: Tournament #3400000001, €0.20 EUR Hold'em No Limit - Level I (10/20) - 2026/10/21 20:06:22 CET
+Table '3400000001 1' 3-max Seat #2 is the button
+Seat 1: Angelituwu (480 in chips)
+Seat 2: bec (500 in chips)
+Seat 3: SosoCourt (520 in chips)
+SosoCourt: posts small blind 10
+Angelituwu: posts big blind 20
+*** HOLE CARDS ***
+Dealt to Angelituwu [Qs 8d]
+bec: raises 20 to 40
+SosoCourt: folds
+Angelituwu: folds
+Uncalled bet (20) returned to bec
+bec collected 50 from pot
+bec: doesn't show hand
+*** SUMMARY ***
+Total pot 50 | Rake 0
+Seat 1: Angelituwu (big blind) folded
+Seat 2: bec (button) collected (50)
+Seat 3: SosoCourt (small blind) folded
+
+
+
+PokerStars Hand #250100000004: Tournament #3400000001, €0.20 EUR Hold'em No Limit - Level I (10/20) - 2026/10/21 20:06:55 CET
+Table '3400000001 1' 3-max Seat #3 is the button
+Seat 1: Angelituwu (460 in chips)
+Seat 2: bec (530 in chips)
+Seat 3: SosoCourt (510 in chips)
+Angelituwu: posts small blind 10
+bec: posts big blind 20
+*** HOLE CARDS ***
+Dealt to Angelituwu [Ah Qh]
+SosoCourt: folds
+Angelituwu: raises 40 to 60
+bec: calls 40
+*** FLOP *** [Qd 8s 3c]
+Angelituwu: bets 48
+bec: calls 48
+*** TURN *** [Qd 8s 3c] [2d]
+Angelituwu: bets 130
+bec: folds
+Uncalled bet (130) returned to Angelituwu
+Angelituwu collected 216 from pot
+Angelituwu: doesn't show hand
+*** SUMMARY ***
+Total pot 216 | Rake 0
+Board [Qd 8s 3c 2d]
+Seat 1: Angelituwu (small blind) collected (216)
+Seat 2: bec (big blind) folded
+Seat 3: SosoCourt (button) folded
+
+
+
+PokerStars Hand #250100000005: Tournament #3400000001, €0.20 EUR Hold'em No Limit - Level II (15/30) - 2026/10/21 20:07:39 CET
+Table '3400000001 1' 3-max Seat #1 is the button
+Seat 1: Angelituwu (568 in chips)
+Seat 2: bec (422 in chips)
+Seat 3: SosoCourt (510 in chips)
+bec: posts small blind 15
+SosoCourt: posts big blind 30
+*** HOLE CARDS ***
+Dealt to Angelituwu [Ts 4c]
+Angelituwu: folds
+bec: folds
+Uncalled bet (15) returned to SosoCourt
+SosoCourt collected 30 from pot
+SosoCourt: doesn't show hand
+*** SUMMARY ***
+Total pot 30 | Rake 0
+Seat 1: Angelituwu (button) folded
+Seat 2: bec (small blind) folded
+Seat 3: SosoCourt (big blind) collected (30)
+
+
+
+PokerStars Hand #250100000006: Tournament #3400000001, €0.20 EUR Hold'em No Limit - Level II (15/30) - 2026/10/21 20:08:11 CET
+Table '3400000001 1' 3-max Seat #2 is the button
+Seat 1: Angelituwu (568 in chips)
+Seat 2: bec (407 in chips)
+Seat 3: SosoCourt (525 in chips)
+SosoCourt: posts small blind 15
+Angelituwu: posts big blind 30
+*** HOLE CARDS ***
+Dealt to Angelituwu [9h 9c]
+bec: raises 30 to 60
+SosoCourt: folds
+Angelituwu: raises 120 to 180
+bec: raises 227 to 407 and is all-in
+Angelituwu: calls 227
+*** FLOP *** [Kc 9s 4d]
+*** TURN *** [Kc 9s 4d] [2h]
+*** RIVER *** [Kc 9s 4d 2h] [Jc]
+*** SHOW DOWN ***
+Angelituwu: shows [9h 9c]
+bec: shows [Ad 6s]
+Angelituwu collected 829 from pot
+bec finished the tournament in 3rd place
+*** SUMMARY ***
+Total pot 829 | Rake 0
+Board [Kc 9s 4d 2h Jc]
+Seat 1: Angelituwu (big blind) showed [9h 9c] and won (829)
+Seat 2: bec (button) showed [Ad 6s] and lost
+Seat 3: SosoCourt (small blind) folded
+
+
+
+PokerStars Hand #250100000007: Tournament #3400000001, €0.20 EUR Hold'em No Limit - Level II (15/30) - 2026/10/21 20:08:51 CET
+Table '3400000001 1' 3-max Seat #3 is the button
+Seat 1: Angelituwu (990 in chips)
+Seat 3: SosoCourt (510 in chips)
+SosoCourt: posts small blind 15
+Angelituwu: posts big blind 30
+*** HOLE CARDS ***
+Dealt to Angelituwu [5c 3d]
+SosoCourt: raises 30 to 60
+Angelituwu: folds
+Uncalled bet (30) returned to SosoCourt
+SosoCourt collected 60 from pot
+SosoCourt: doesn't show hand
+*** SUMMARY ***
+Total pot 60 | Rake 0
+Seat 1: Angelituwu (big blind) folded
+Seat 3: SosoCourt (button) collected (60)
+
+
+
+PokerStars Hand #250100000008: Tournament #3400000001, €0.20 EUR Hold'em No Limit - Level III (20/40) - 2026/10/21 20:09:24 CET
+Table '3400000001 1' 3-max Seat #1 is the button
+Seat 1: Angelituwu (960 in chips)
+Seat 3: SosoCourt (540 in chips)
+Angelituwu: posts small blind 20
+SosoCourt: posts big blind 40
+*** HOLE CARDS ***
+Dealt to Angelituwu [Kh Ts]
+Angelituwu: raises 60 to 100
+SosoCourt: calls 60
+*** FLOP *** [Th 6c 2s]
+SosoCourt: checks
+Angelituwu: bets 100
+SosoCourt: folds
+Uncalled bet (100) returned to Angelituwu
+Angelituwu collected 200 from pot
+Angelituwu: doesn't show hand
+*** SUMMARY ***
+Total pot 200 | Rake 0
+Board [Th 6c 2s]
+Seat 1: Angelituwu (button) collected (200)
+Seat 3: SosoCourt (big blind) folded
+
+
+
+PokerStars Hand #250100000009: Tournament #3400000001, €0.20 EUR Hold'em No Limit - Level III (20/40) - 2026/10/21 20:10:00 CET
+Table '3400000001 1' 3-max Seat #3 is the button
+Seat 1: Angelituwu (1060 in chips)
+Seat 3: SosoCourt (440 in chips)
+SosoCourt: posts small blind 20
+Angelituwu: posts big blind 40
+*** HOLE CARDS ***
+Dealt to Angelituwu [8c 6d]
+SosoCourt: calls 20
+Angelituwu: checks
+*** FLOP *** [Js 9d 4h]
+Angelituwu: checks
+SosoCourt: bets 40
+Angelituwu: folds
+Uncalled bet (40) returned to SosoCourt
+SosoCourt collected 80 from pot
+SosoCourt: doesn't show hand
+*** SUMMARY ***
+Total pot 80 | Rake 0
+Board [Js 9d 4h]
+Seat 1: Angelituwu (big blind) folded
+Seat 3: SosoCourt (button) collected (80)
+
+
+
+PokerStars Hand #250100000010: Tournament #3400000001, €0.20 EUR Hold'em No Limit - Level III (20/40) - 2026/10/21 20:10:35 CET
+Table '3400000001 1' 3-max Seat #1 is the button
+Seat 1: Angelituwu (1020 in chips)
+Seat 3: SosoCourt (480 in chips)
+Angelituwu: posts small blind 20
+SosoCourt: posts big blind 40
+*** HOLE CARDS ***
+Dealt to Angelituwu [As Kd]
+Angelituwu: raises 60 to 100
+SosoCourt: raises 380 to 480 and is all-in
+Angelituwu: calls 380
+*** FLOP *** [Qh 7s 3c]
+*** TURN *** [Qh 7s 3c] [Kc]
+*** RIVER *** [Qh 7s 3c Kc] [2d]
+*** SHOW DOWN ***
+SosoCourt: shows [Jd Jc]
+Angelituwu: shows [As Kd]
+Angelituwu collected 960 from pot
+SosoCourt finished the tournament in 2nd place
+Angelituwu wins the tournament and receives €0.60 - congratulations!
+*** SUMMARY ***
+Total pot 960 | Rake 0
+Board [Qh 7s 3c Kc 2d]
+Seat 1: Angelituwu (button) showed [As Kd] and won (960)
+Seat 3: SosoCourt (big blind) showed [Jd Jc] and lost
+
+
+
+PokerStars Hand #250100000011: Tournament #3400000002, €0.20 EUR Hold'em No Limit - Level I (10/20) - 2026/10/21 20:12:30 CET
+Table '3400000002 1' 3-max Seat #2 is the button
+Seat 1: Angelituwu (500 in chips)
+Seat 2: bec (500 in chips)
+Seat 3: SosoCourt (500 in chips)
+SosoCourt: posts small blind 10
+Angelituwu: posts big blind 20
+*** HOLE CARDS ***
+Dealt to Angelituwu [Ad Kc]
+bec: folds
+SosoCourt: calls 10
+Angelituwu: raises 60 to 80
+SosoCourt: folds
+Uncalled bet (60) returned to Angelituwu
+Angelituwu collected 40 from pot
+Angelituwu: doesn't show hand
+*** SUMMARY ***
+Total pot 40 | Rake 0
+Seat 1: Angelituwu (big blind) collected (40)
+Seat 2: bec (button) folded
+Seat 3: SosoCourt (small blind) folded
+
+
+
+PokerStars Hand #250100000012: Tournament #3400000002, €0.20 EUR Hold'em No Limit - Level I (10/20) - 2026/10/21 20:13:06 CET
+Table '3400000002 1' 3-max Seat #3 is the button
+Seat 1: Angelituwu (520 in chips)
+Seat 2: bec (500 in chips)
+Seat 3: SosoCourt (480 in chips)
+Angelituwu: posts small blind 10
+bec: posts big blind 20
+*** HOLE CARDS ***
+Dealt to Angelituwu [Jc 4s]
+SosoCourt: folds
+Angelituwu: folds
+Uncalled bet (10) returned to bec
+bec collected 20 from pot
+bec: doesn't show hand
+*** SUMMARY ***
+Total pot 20 | Rake 0
+Seat 1: Angelituwu (small blind) folded
+Seat 2: bec (big blind) collected (20)
+Seat 3: SosoCourt (button) folded
+
+
+
+PokerStars Hand #250100000013: Tournament #3400000002, €0.20 EUR Hold'em No Limit - Level I (10/20) - 2026/10/21 20:13:39 CET
+Table '3400000002 1' 3-max Seat #1 is the button
+Seat 1: Angelituwu (510 in chips)
+Seat 2: bec (510 in chips)
+Seat 3: SosoCourt (480 in chips)
+bec: posts small blind 10
+SosoCourt: posts big blind 20
+*** HOLE CARDS ***
+Dealt to Angelituwu [Kh Qd]
+Angelituwu: raises 30 to 50
+bec: calls 40
+SosoCourt: folds
+*** FLOP *** [Kc 8d 3s]
+bec: checks
+Angelituwu: bets 60
+bec: raises 90 to 150
+Angelituwu: calls 90
+*** TURN *** [Kc 8d 3s] [6h]
+bec: bets 120
+Angelituwu: calls 120
+*** RIVER *** [Kc 8d 3s 6h] [2c]
+bec: checks
+Angelituwu: checks
+*** SHOW DOWN ***
+bec: shows [8h 8c]
+Angelituwu: shows [Kh Qd]
+bec collected 660 from pot
+*** SUMMARY ***
+Total pot 660 | Rake 0
+Board [Kc 8d 3s 6h 2c]
+Seat 1: Angelituwu (button) showed [Kh Qd] and lost
+Seat 2: bec (small blind) showed [8h 8c] and won (660)
+Seat 3: SosoCourt (big blind) folded
+
+
+
+PokerStars Hand #250100000014: Tournament #3400000002, €0.20 EUR Hold'em No Limit - Level I (10/20) - 2026/10/21 20:14:20 CET
+Table '3400000002 1' 3-max Seat #2 is the button
+Seat 1: Angelituwu (190 in chips)
+Seat 2: bec (850 in chips)
+Seat 3: SosoCourt (460 in chips)
+SosoCourt: posts small blind 10
+Angelituwu: posts big blind 20
+*** HOLE CARDS ***
+Dealt to Angelituwu [9s 5h]
+bec: folds
+SosoCourt: calls 10
+Angelituwu: raises 170 to 190 and is all-in
+SosoCourt: calls 170
+*** FLOP *** [Ah Td 7c]
+*** TURN *** [Ah Td 7c] [3s]
+*** RIVER *** [Ah Td 7c 3s] [2h]
+*** SHOW DOWN ***
+SosoCourt: shows [Qc Jd]
+Angelituwu: shows [9s 5h]
+SosoCourt collected 380 from pot
+Angelituwu finished the tournament in 3rd place
+*** SUMMARY ***
+Total pot 380 | Rake 0
+Board [Ah Td 7c 3s 2h]
+Seat 1: Angelituwu (big blind) showed [9s 5h] and lost
+Seat 2: bec (button) folded
+Seat 3: SosoCourt (small blind) showed [Qc Jd] and won (380)
+
+
+
+PokerStars Hand #250100000015: Tournament #3400000003, €0.20 EUR Hold'em No Limit - Level I (10/20) - 2026/10/21 20:14:50 CET
+Table '3400000003 1' 3-max Seat #3 is the button
+Seat 1: Angelituwu (500 in chips)
+Seat 2: bec (500 in chips)
+Seat 3: SosoCourt (500 in chips)
+Angelituwu: posts small blind 10
+bec: posts big blind 20
+*** HOLE CARDS ***
+Dealt to Angelituwu [8s 3s]
+SosoCourt: calls 20
+Angelituwu: calls 10
+bec: checks
+*** FLOP *** [Qh 7s 2d]
+Angelituwu: checks
+bec: bets 30
+SosoCourt: folds
+Angelituwu: calls 30
+*** TURN *** [Qh 7s 2d] [5c]
+Angelituwu: checks
+bec: bets 50
+Angelituwu: folds
+Uncalled bet (50) returned to bec
+bec collected 120 from pot
+bec: doesn't show hand
+*** SUMMARY ***
+Total pot 120 | Rake 0
+Board [Qh 7s 2d 5c]
+Seat 1: Angelituwu (small blind) folded
+Seat 2: bec (big blind) collected (120)
+Seat 3: SosoCourt (button) folded
+
+
+
+PokerStars Hand #250100000017: Tournament #3400000003, €0.20 EUR Hold'em No Limit - Level I (10/20) - 2026/10/21 20:15:09 CET
+Table '3400000003 1' 3-max Seat #1 is the button
+Seat 1: Angelituwu (450 in chips)
+Seat 2: bec (570 in chips)
+Seat 3: SosoCourt (480 in chips)
+bec: posts small blind 10
+SosoCourt: posts big blind 20
+*** HOLE CARDS ***
+Dealt to Angelituwu [Jd 6c]
+Angelituwu: calls 20
+bec: raises 40 to 60
+SosoCourt: folds
+Angelituwu: calls 40
+*** FLOP *** [Kd 9c 4h]
+bec: bets 70
+Angelituwu: folds
+Uncalled bet (70) returned to bec
+bec collected 140 from pot
+bec: doesn't show hand
+*** SUMMARY ***
+Total pot 140 | Rake 0
+Board [Kd 9c 4h]
+Seat 1: Angelituwu (button) folded
+Seat 2: bec (small blind) collected (140)
+Seat 3: SosoCourt (big blind) folded
+
+
+
+PokerStars Hand #250100000019: Tournament #3400000003, €0.20 EUR Hold'em No Limit - Level I (10/20) - 2026/10/21 20:15:26 CET
+Table '3400000003 1' 3-max Seat #2 is the button
+Seat 1: Angelituwu (390 in chips)
+Seat 2: bec (650 in chips)
+Seat 3: SosoCourt (460 in chips)
+SosoCourt: posts small blind 10
+Angelituwu: posts big blind 20
+*** HOLE CARDS ***
+Dealt to Angelituwu [Th 7h]
+bec: raises 20 to 40
+SosoCourt: calls 30
+Angelituwu: calls 20
+*** FLOP *** [Ac 8h 2s]
+SosoCourt: checks
+Angelituwu: checks
+bec: bets 60
+SosoCourt: folds
+Angelituwu: folds
+Uncalled bet (60) returned to bec
+bec collected 120 from pot
+bec: doesn't show hand
+*** SUMMARY ***
+Total pot 120 | Rake 0
+Board [Ac 8h 2s]
+Seat 1: Angelituwu (big blind) folded
+Seat 2: bec (button) collected (120)
+Seat 3: SosoCourt (small blind) folded
+
+
+
+PokerStars Hand #250100000021: Tournament #3400000003, €0.20 EUR Hold'em No Limit - Level I (10/20) - 2026/10/21 20:15:47 CET
+Table '3400000003 1' 3-max Seat #3 is the button
+Seat 1: Angelituwu (350 in chips)
+Seat 2: bec (730 in chips)
+Seat 3: SosoCourt (420 in chips)
+Angelituwu: posts small blind 10
+bec: posts big blind 20
+*** HOLE CARDS ***
+Dealt to Angelituwu [5d 2s]
+SosoCourt: calls 20
+Angelituwu: folds
+bec: raises 710 to 730 and is all-in
+SosoCourt: calls 400 and is all-in
+Uncalled bet (310) returned to bec
+*** FLOP *** [Kd Jc 5s]
+*** TURN *** [Kd Jc 5s] [9h]
+*** RIVER *** [Kd Jc 5s 9h] [3d]
+*** SHOW DOWN ***
+bec: shows [7d 2c]
+SosoCourt: shows [As 9s]
+SosoCourt collected 850 from pot
+*** SUMMARY ***
+Total pot 850 | Rake 0
+Board [Kd Jc 5s 9h 3d]
+Seat 1: Angelituwu (small blind) folded
+Seat 2: bec (big blind) showed [7d 2c] and lost
+Seat 3: SosoCourt (button) showed [As 9s] and won (850)
+
+
+
+PokerStars Hand #250100000023: Tournament #3400000003, €0.20 EUR Hold'em No Limit - Level I (10/20) - 2026/10/21 20:16:09 CET
+Table '3400000003 1' 3-max Seat #1 is the button
+Seat 1: Angelituwu (340 in chips)
+Seat 2: bec (310 in chips)
+Seat 3: SosoCourt (850 in chips)
+bec: posts small blind 10
+SosoCourt: posts big blind 20
+*** HOLE CARDS ***
+Dealt to Angelituwu [Kc 7d]
+Angelituwu: raises 20 to 40
+bec: folds
+SosoCourt: calls 20
+*** FLOP *** [6d 6s Jh]
+SosoCourt: checks
+Angelituwu: bets 40
+SosoCourt: calls 40
+*** TURN *** [6d 6s Jh] [2c]
+SosoCourt: checks
+Angelituwu: checks
+*** RIVER *** [6d 6s Jh 2c] [Qs]
+SosoCourt: bets 100
+Angelituwu: folds
+Uncalled bet (100) returned to SosoCourt
+SosoCourt collected 170 from pot
+SosoCourt: doesn't show hand
+*** SUMMARY ***
+Total pot 170 | Rake 0
+Board [6d 6s Jh 2c Qs]
+Seat 1: Angelituwu (button) folded
+Seat 2: bec (small blind) folded
+Seat 3: SosoCourt (big blind) collected (170)
+
+
+
+PokerStars Hand #250100000025: Tournament #3400000003, €0.20 EUR Hold'em No Limit - Level I (10/20) - 2026/10/21 20:16:29 CET
+Table '3400000003 1' 3-max Seat #2 is the button
+Seat 1: Angelituwu (260 in chips)
+Seat 2: bec (300 in chips)
+Seat 3: SosoCourt (940 in chips)
+SosoCourt: posts small blind 10
+Angelituwu: posts big blind 20
+*** HOLE CARDS ***
+Dealt to Angelituwu [4d 4c]
+bec: folds
+SosoCourt: raises 20 to 40
+Angelituwu: raises 220 to 260 and is all-in
+SosoCourt: folds
+Uncalled bet (220) returned to Angelituwu
+Angelituwu collected 80 from pot
+Angelituwu: doesn't show hand
+*** SUMMARY ***
+Total pot 80 | Rake 0
+Seat 1: Angelituwu (big blind) collected (80)
+Seat 2: bec (button) folded
+Seat 3: SosoCourt (small blind) folded
+
+
+
+PokerStars Hand #250100000027: Tournament #3400000003, €0.20 EUR Hold'em No Limit - Level I (10/20) - 2026/10/21 20:16:47 CET
+Table '3400000003 1' 3-max Seat #3 is the button
+Seat 1: Angelituwu (300 in chips)
+Seat 2: bec (300 in chips)
+Seat 3: SosoCourt (900 in chips)
+Angelituwu: posts small blind 10
+bec: posts big blind 20
+*** HOLE CARDS ***
+Dealt to Angelituwu [Qc 9c]
+SosoCourt: folds
+Angelituwu: raises 40 to 60
+bec: calls 40
+*** FLOP *** [9h 5d 2c]
+Angelituwu: bets 60
+bec: calls 60
+*** TURN *** [9h 5d 2c] [Kh]
+Angelituwu: bets 120
+bec: folds
+Uncalled bet (120) returned to Angelituwu
+Angelituwu collected 240 from pot
+Angelituwu: doesn't show hand
+*** SUMMARY ***
+Total pot 240 | Rake 0
+Board [9h 5d 2c Kh]
+Seat 1: Angelituwu (small blind) collected (240)
+Seat 2: bec (big blind) folded
+Seat 3: SosoCourt (button) folded
+
+
+
+PokerStars Hand #250100000029: Tournament #3400000003, €0.20 EUR Hold'em No Limit - Level II (15/30) - 2026/10/21 20:17:08 CET
+Table '3400000003 1' 3-max Seat #1 is the button
+Seat 1: Angelituwu (420 in chips)
+Seat 2: bec (180 in chips)
+Seat 3: SosoCourt (900 in chips)
+bec: posts small blind 15
+SosoCourt: posts big blind 30
+*** HOLE CARDS ***
+Dealt to Angelituwu [8h 3d]
+Angelituwu: folds
+bec: raises 30 to 60
+SosoCourt: folds
+Uncalled bet (30) returned to bec
+bec collected 60 from pot
+bec: doesn't show hand
+*** SUMMARY ***
+Total pot 60 | Rake 0
+Seat 1: Angelituwu (button) folded
+Seat 2: bec (small blind) collected (60)
+Seat 3: SosoCourt (big blind) folded
+
+
+
+PokerStars Hand #250100000031: Tournament #3400000003, €0.20 EUR Hold'em No Limit - Level II (15/30) - 2026/10/21 20:17:44 CET
+Table '3400000003 1' 3-max Seat #2 is the button
+Seat 1: Angelituwu (420 in chips)
+Seat 2: bec (210 in chips)
+Seat 3: SosoCourt (870 in chips)
+SosoCourt: posts small blind 15
+Angelituwu: posts big blind 30
+*** HOLE CARDS ***
+Dealt to Angelituwu [Qs 6h]
+bec: raises 30 to 60
+SosoCourt: folds
+Angelituwu: folds
+Uncalled bet (30) returned to bec
+bec collected 75 from pot
+bec: doesn't show hand
+*** SUMMARY ***
+Total pot 75 | Rake 0
+Seat 1: Angelituwu (big blind) folded
+Seat 2: bec (button) collected (75)
+Seat 3: SosoCourt (small blind) folded
+
+
+
+PokerStars Hand #250100000033: Tournament #3400000003, €0.20 EUR Hold'em No Limit - Level II (15/30) - 2026/10/21 20:18:18 CET
+Table '3400000003 1' 3-max Seat #3 is the button
+Seat 1: Angelituwu (390 in chips)
+Seat 2: bec (255 in chips)
+Seat 3: SosoCourt (855 in chips)
+Angelituwu: posts small blind 15
+bec: posts big blind 30
+*** HOLE CARDS ***
+Dealt to Angelituwu [Ac Jd]
+SosoCourt: folds
+Angelituwu: raises 60 to 90
+bec: folds
+Uncalled bet (60) returned to Angelituwu
+Angelituwu collected 60 from pot
+Angelituwu: doesn't show hand
+*** SUMMARY ***
+Total pot 60 | Rake 0
+Seat 1: Angelituwu (small blind) collected (60)
+Seat 2: bec (big blind) folded
+Seat 3: SosoCourt (button) folded
+
+
+
+PokerStars Hand #250100000034: Tournament #3400000003, €0.20 EUR Hold'em No Limit - Level III (20/40) - 2026/10/21 20:18:56 CET
+Table '3400000003 1' 3-max Seat #1 is the button
+Seat 1: Angelituwu (420 in chips)
+Seat 2: bec (225 in chips)
+Seat 3: SosoCourt (855 in chips)
+bec: posts small blind 20
+SosoCourt: posts big blind 40
+*** HOLE CARDS ***
+Dealt to Angelituwu [7d 4c]
+Angelituwu: folds
+bec: folds
+Uncalled bet (20) returned to SosoCourt
+SosoCourt collected 40 from pot
+SosoCourt: doesn't show hand
+*** SUMMARY ***
+Total pot 40 | Rake 0
+Seat 1: Angelituwu (button) folded
+Seat 2: bec (small blind) folded
+Seat 3: SosoCourt (big blind) collected (40)
+
+
+
+PokerStars Hand #250100000035: Tournament #3400000003, €0.20 EUR Hold'em No Limit - Level III (20/40) - 2026/10/21 20:19:29 CET
+Table '3400000003 1' 3-max Seat #2 is the button
+Seat 1: Angelituwu (420 in chips)
+Seat 2: bec (205 in chips)
+Seat 3: SosoCourt (875 in chips)
+SosoCourt: posts small blind 20
+Angelituwu: posts big blind 40
+*** HOLE CARDS ***
+Dealt to Angelituwu [Ah Jh]
+bec: raises 165 to 205 and is all-in
+SosoCourt: folds
+Angelituwu: calls 165
+*** FLOP *** [2c 7h Jc]
+*** TURN *** [2c 7h Jc] [4s]
+*** RIVER *** [2c 7h Jc 4s] [9d]
+*** SHOW DOWN ***
+Angelituwu: shows [Ah Jh]
+bec: shows [Kd Td]
+Angelituwu collected 430 from pot
+bec finished the tournament in 3rd place
+*** SUMMARY ***
+Total pot 430 | Rake 0
+Board [2c 7h Jc 4s 9d]
+Seat 1: Angelituwu (big blind) showed [Ah Jh] and won (430)
+Seat 2: bec (button) showed [Kd Td] and lost
+Seat 3: SosoCourt (small blind) folded
+
+
+
+PokerStars Hand #250100000016: Tournament #3400000004, €0.20 EUR Hold'em No Limit - Level I (10/20) - 2026/10/21 20:15:02 CET
+Table '3400000004 1' 3-max Seat #2 is the button
+Seat 1: Angelituwu (500 in chips)
+Seat 2: bec (500 in chips)
+Seat 3: SosoCourt (500 in chips)
+SosoCourt: posts small blind 10
+Angelituwu: posts big blind 20
+*** HOLE CARDS ***
+Dealt to Angelituwu [6h 2h]
+bec: raises 20 to 40
+SosoCourt: folds
+Angelituwu: calls 20
+*** FLOP *** [Jd 9s 3h]
+Angelituwu: checks
+bec: bets 45
+Angelituwu: folds
+Uncalled bet (45) returned to bec
+bec collected 90 from pot
+bec: doesn't show hand
+*** SUMMARY ***
+Total pot 90 | Rake 0
+Board [Jd 9s 3h]
+Seat 1: Angelituwu (big blind) folded
+Seat 2: bec (button) collected (90)
+Seat 3: SosoCourt (small blind) folded
+
+
+
+PokerStars Hand #250100000018: Tournament #3400000004, €0.20 EUR Hold'em No Limit - Level I (10/20) - 2026/10/21 20:15:22 CET
+Table '3400000004 1' 3-max Seat #3 is the button
+Seat 1: Angelituwu (460 in chips)
+Seat 2: bec (550 in chips)
+Seat 3: SosoCourt (490 in chips)
+Angelituwu: posts small blind 10
+bec: posts big blind 20
+*** HOLE CARDS ***
+Dealt to Angelituwu [Qd 5s]
+SosoCourt: folds
+Angelituwu: calls 10
+bec: raises 40 to 60
+Angelituwu: calls 40
+*** FLOP *** [Th 7c 4d]
+Angelituwu: checks
+bec: bets 60
+Angelituwu: folds
+Uncalled bet (60) returned to bec
+bec collected 120 from pot
+bec: doesn't show hand
+*** SUMMARY ***
+Total pot 120 | Rake 0
+Board [Th 7c 4d]
+Seat 1: Angelituwu (small blind) folded
+Seat 2: bec (big blind) collected (120)
+Seat 3: SosoCourt (button) folded
+
+
+
+PokerStars Hand #250100000020: Tournament #3400000004, €0.20 EUR Hold'em No Limit - Level I (10/20) - 2026/10/21 20:15:41 CET
+Table '3400000004 1' 3-max Seat #1 is the button
+Seat 1: Angelituwu (400 in chips)
+Seat 2: bec (610 in chips)
+Seat 3: SosoCourt (490 in chips)
+bec: posts small blind 10
+SosoCourt: posts big blind 20
+*** HOLE CARDS ***
+Dealt to Angelituwu [Kc 9d]
+Angelituwu: raises 20 to 40
+bec: folds
+SosoCourt: calls 20
+*** FLOP *** [9h 6c 3s]
+SosoCourt: checks
+Angelituwu: bets 45
+SosoCourt: calls 45
+*** TURN *** [9h 6c 3s] [Js]
+SosoCourt: checks
+Angelituwu: checks
+*** RIVER *** [9h 6c 3s Js] [2h]
+SosoCourt: bets 60
+Angelituwu: calls 60
+*** SHOW DOWN ***
+SosoCourt: shows [Jh 3d]
+Angelituwu: shows [Kc 9d]
+SosoCourt collected 300 from pot
+*** SUMMARY ***
+Total pot 300 | Rake 0
+Board [9h 6c 3s Js 2h]
+Seat 1: Angelituwu (button) showed [Kc 9d] and lost
+Seat 2: bec (small blind) folded
+Seat 3: SosoCourt (big blind) showed [Jh 3d] and won (300)
+
+
+
+PokerStars Hand #250100000022: Tournament #3400000004, €0.20 EUR Hold'em No Limit - Level I (10/20) - 2026/10/21 20:16:04 CET
+Table '3400000004 1' 3-max Seat #2 is the button
+Seat 1: Angelituwu (255 in chips)
+Seat 2: bec (600 in chips)
+Seat 3: SosoCourt (645 in chips)
+SosoCourt: posts small blind 10
+Angelituwu: posts big blind 20
+*** HOLE CARDS ***
+Dealt to Angelituwu [7s 5s]
+bec: raises 20 to 40
+SosoCourt: calls 30
+Angelituwu: calls 20
+*** FLOP *** [8d 6s 2c]
+SosoCourt: checks
+Angelituwu: bets 60
+bec: raises 140 to 200
+SosoCourt: folds
+Angelituwu: raises 15 to 215 and is all-in
+bec: calls 15
+*** TURN *** [8d 6s 2c] [Kc]
+*** RIVER *** [8d 6s 2c Kc] [4h]
+*** SHOW DOWN ***
+Angelituwu: shows [7s 5s]
+bec: shows [Ad 8h]
+Angelituwu collected 550 from pot
+*** SUMMARY ***
+Total pot 550 | Rake 0
+Board [8d 6s 2c Kc 4h]
+Seat 1: Angelituwu (big blind) showed [7s 5s] and won (550)
+Seat 2: bec (button) showed [Ad 8h] and lost
+Seat 3: SosoCourt (small blind) folded
+
+
+
+PokerStars Hand #250100000024: Tournament #3400000004, €0.20 EUR Hold'em No Limit - Level I (10/20) - 2026/10/21 20:16:25 CET
+Table '3400000004 1' 3-max Seat #3 is the button
+Seat 1: Angelituwu (550 in chips)
+Seat 2: bec (345 in chips)
+Seat 3: SosoCourt (605 in chips)
+Angelituwu: posts small blind 10
+bec: posts big blind 20
+*** HOLE CARDS ***
+Dealt to Angelituwu [Td 3c]
+SosoCourt: folds
+Angelituwu: calls 10
+bec: raises 40 to 60
+Angelituwu: folds
+Uncalled bet (40) returned to bec
+bec collected 40 from pot
+bec: doesn't show hand
+*** SUMMARY ***
+Total pot 40 | Rake 0
+Seat 1: Angelituwu (small blind) folded
+Seat 2: bec (big blind) collected (40)
+Seat 3: SosoCourt (button) folded
+
+
+
+PokerStars Hand #250100000026: Tournament #3400000004, €0.20 EUR Hold'em No Limit - Level I (10/20) - 2026/10/21 20:16:43 CET
+Table '3400000004 1' 3-max Seat #1 is the button
+Seat 1: Angelituwu (530 in chips)
+Seat 2: bec (365 in chips)
+Seat 3: SosoCourt (605 in chips)
+bec: posts small blind 10
+SosoCourt: posts big blind 20
+*** HOLE CARDS ***
+Dealt to Angelituwu [Jh 8c]
+Angelituwu: calls 20
+bec: calls 10
+SosoCourt: checks
+*** FLOP *** [Qc 9d 5h]
+bec: checks
+SosoCourt: checks
+Angelituwu: bets 30
+bec: folds
+SosoCourt: calls 30
+*** TURN *** [Qc 9d 5h] [3s]
+SosoCourt: checks
+Angelituwu: checks
+*** RIVER *** [Qc 9d 5h 3s] [Kd]
+SosoCourt: checks
+Angelituwu: checks
+*** SHOW DOWN ***
+SosoCourt: shows [Qh 2d]
+Angelituwu: shows [Jh 8c]
+SosoCourt collected 120 from pot
+*** SUMMARY ***
+Total pot 120 | Rake 0
+Board [Qc 9d 5h 3s Kd]
+Seat 1: Angelituwu (button) showed [Jh 8c] and lost
+Seat 2: bec (small blind) folded
+Seat 3: SosoCourt (big blind) showed [Qh 2d] and won (120)
+
+
+
+PokerStars Hand #250100000028: Tournament #3400000004, €0.20 EUR Hold'em No Limit - Level II (15/30) - 2026/10/21 20:17:07 CET
+Table '3400000004 1' 3-max Seat #2 is the button
+Seat 1: Angelituwu (480 in chips)
+Seat 2: bec (345 in chips)
+Seat 3: SosoCourt (675 in chips)
+SosoCourt: posts small blind 15
+Angelituwu: posts big blind 30
+*** HOLE CARDS ***
+Dealt to Angelituwu [Ts 9s]
+bec: raises 30 to 60
+SosoCourt: folds
+Angelituwu: calls 30
+*** FLOP *** [9d 7h 3c]
+Angelituwu: checks
+bec: bets 68
+Angelituwu: calls 68
+*** TURN *** [9d 7h 3c] [2s]
+Angelituwu: checks
+bec: checks
+*** RIVER *** [9d 7h 3c 2s] [8d]
+Angelituwu: checks
+bec: checks
+*** SHOW DOWN ***
+Angelituwu: shows [Ts 9s]
+bec: shows [Ac 4c]
+Angelituwu collected 271 from pot
+*** SUMMARY ***
+Total pot 271 | Rake 0
+Board [9d 7h 3c 2s 8d]
+Seat 1: Angelituwu (big blind) showed [Ts 9s] and won (271)
+Seat 2: bec (button) showed [Ac 4c] and lost
+Seat 3: SosoCourt (small blind) folded
+
+
+
+PokerStars Hand #250100000030: Tournament #3400000004, €0.20 EUR Hold'em No Limit - Level II (15/30) - 2026/10/21 20:17:29 CET
+Table '3400000004 1' 3-max Seat #3 is the button
+Seat 1: Angelituwu (623 in chips)
+Seat 2: bec (217 in chips)
+Seat 3: SosoCourt (660 in chips)
+Angelituwu: posts small blind 15
+bec: posts big blind 30
+*** HOLE CARDS ***
+Dealt to Angelituwu [9c 2d]
+SosoCourt: folds
+Angelituwu: folds
+Uncalled bet (15) returned to bec
+bec collected 30 from pot
+bec: doesn't show hand
+*** SUMMARY ***
+Total pot 30 | Rake 0
+Seat 1: Angelituwu (small blind) folded
+Seat 2: bec (big blind) collected (30)
+Seat 3: SosoCourt (button) folded
+
+
+
+PokerStars Hand #250100000032: Tournament #3400000004, €0.20 EUR Hold'em No Limit - Level II (15/30) - 2026/10/21 20:18:04 CET
+Table '3400000004 1' 3-max Seat #1 is the button
+Seat 1: Angelituwu (608 in chips)
+Seat 2: bec (232 in chips)
+Seat 3: SosoCourt (660 in chips)
+bec: posts small blind 15
+SosoCourt: posts big blind 30
+*** HOLE CARDS ***
+Dealt to Angelituwu [Kh 7c]
+Angelituwu: raises 578 to 608 and is all-in
+bec: folds
+SosoCourt: calls 578
+*** FLOP *** [Qs 8h 3c]
+*** TURN *** [Qs 8h 3c] [2d]
+*** RIVER *** [Qs 8h 3c 2d] [9s]
+*** SHOW DOWN ***
+SosoCourt: shows [Qd 4h]
+Angelituwu: shows [Kh 7c]
+SosoCourt collected 1231 from pot
+Angelituwu finished the tournament in 3rd place
+*** SUMMARY ***
+Total pot 1231 | Rake 0
+Board [Qs 8h 3c 2d 9s]
+Seat 1: Angelituwu (button) showed [Kh 7c] and lost
+Seat 2: bec (small blind) folded
+Seat 3: SosoCourt (big blind) showed [Qd 4h] and won (1231)
