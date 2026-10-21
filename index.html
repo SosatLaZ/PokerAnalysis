@@ -1,0 +1,434 @@
+<title>Table de décision</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+/* Mise en page : une table de décision. À gauche la situation (cartes, pot,
+   adversaires), à droite le verdict qui se recalcule à chaque changement. */
+:root {
+  --fond: #eef1f4;
+  --surface: #ffffff;
+  --encre: #17202b;
+  --discret: #5a6674;
+  --trait: #d6dde4;
+  --tapis: #1d6b58;
+  --tapis-doux: #e2efe9;
+  --bon: #1b7a4b;
+  --mauvais: #b3263a;
+  --limite: #9a5c00;
+  --face: #ffffff;
+  --face-trait: #c9d0d8;
+  --rouge-carte: #c42a3c;
+  --noir-carte: #17202b;
+  --police-titre: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --police-texte: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --police-chiffres: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fond: #0e1318;
+    --surface: #161d25;
+    --encre: #e4e9ee;
+    --discret: #94a1ae;
+    --trait: #29333e;
+    --tapis: #55b896;
+    --tapis-doux: #17302a;
+    --bon: #5ccf90;
+    --mauvais: #ff7a86;
+    --limite: #f0b459;
+    --face-trait: #3a4552;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --fond: #0e1318;
+  --surface: #161d25;
+  --encre: #e4e9ee;
+  --discret: #94a1ae;
+  --trait: #29333e;
+  --tapis: #55b896;
+  --tapis-doux: #17302a;
+  --bon: #5ccf90;
+  --mauvais: #ff7a86;
+  --limite: #f0b459;
+  --face-trait: #3a4552;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--fond);
+  color: var(--encre);
+  font-family: var(--police-texte);
+  font-size: 15px;
+  line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 40px;
+}
+.page { max-width: 1120px; margin: 0 auto; display: grid; gap: 20px; }
+
+header.entete { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; }
+h1 {
+  font-family: var(--police-titre);
+  font-variation-settings: "wdth" 118;
+  font-weight: 800;
+  font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0;
+  text-wrap: balance;
+}
+.sous-titre { margin: 4px 0 0; color: var(--discret); max-width: 60ch; }
+
+nav.onglets { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--trait); border-radius: 10px; padding: 4px; }
+nav.onglets a {
+  font-family: var(--police-titre);
+  font-variation-settings: "wdth" 100;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--discret);
+  padding: 7px 14px;
+  border-radius: 7px;
+  white-space: nowrap;
+}
+nav.onglets a[aria-current="page"] { background: var(--tapis); color: var(--surface); }
+nav.onglets a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 2px solid var(--tapis); outline-offset: 2px; }
+
+.vue { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.vue.large { grid-template-columns: minmax(0, 1fr); }
+@media (max-width: 860px) { .vue { grid-template-columns: minmax(0, 1fr); } }
+
+.panneau { background: var(--surface); border: 1px solid var(--trait); border-radius: 14px; padding: 18px; display: grid; gap: 18px; min-width: 0; }
+.verdict-panneau { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); }
+@media (max-width: 860px) { .verdict-panneau { position: static; } }
+
+.etiquette {
+  font-family: var(--police-titre);
+  font-variation-settings: "wdth" 90;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--discret);
+  margin: 0 0 8px;
+}
+.groupe { display: grid; gap: 8px; min-width: 0; }
+.ligne { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; }
+.aide { font-size: 0.85rem; color: var(--discret); margin: 0; }
+.erreur { color: var(--mauvais); font-size: 0.88rem; margin: 0; }
+
+/* Les cartes */
+.emplacements { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.separateur { width: 1px; align-self: stretch; background: var(--trait); margin: 0 4px; }
+.emplacement {
+  width: 52px; height: 72px;
+  border-radius: 8px;
+  border: 1.5px dashed var(--face-trait);
+  background: transparent;
+  color: var(--discret);
+  font: 600 1.2rem var(--police-titre);
+  display: grid; place-items: center;
+  cursor: pointer;
+  padding: 0;
+}
+.emplacement.actif { border-color: var(--tapis); border-style: solid; box-shadow: 0 0 0 3px var(--tapis-doux); }
+.emplacement.plein { border: 1px solid var(--face-trait); background: var(--face); }
+.carte { display: grid; justify-items: center; line-height: 1; gap: 2px; font-family: var(--police-titre); font-weight: 800; }
+.carte b { font-size: 1.35rem; font-variation-settings: "wdth" 80; }
+.carte i { font-style: normal; font-size: 1.15rem; }
+.rouge { color: var(--rouge-carte); }
+.noir { color: var(--noir-carte); }
+.carte-texte { font-family: var(--police-titre); font-weight: 700; white-space: nowrap; }
+.carte-texte .rouge, .carte-texte .noir { padding: 0 1px; }
+.carte-texte span { background: var(--face); border: 1px solid var(--face-trait); border-radius: 4px; padding: 0 3px; margin-right: 2px; }
+
+.paquet { display: grid; grid-template-columns: repeat(13, minmax(0, 1fr)); gap: 3px; }
+.paquet button {
+  aspect-ratio: 5 / 7;
+  max-width: 100%;
+  min-width: 0;
+  border-radius: 5px;
+  border: 1px solid var(--face-trait);
+  background: var(--face);
+  padding: 0;
+  cursor: pointer;
+  font: 800 clamp(0.62rem, 1.6vw, 0.85rem) / 1 var(--police-titre);
+  display: grid; place-items: center; align-content: center; gap: 1px;
+}
+.paquet button span { display: block; }
+.paquet button:hover:not(:disabled) { border-color: var(--tapis); }
+.paquet button:disabled { opacity: 0.22; cursor: default; }
+
+/* Champs */
+label.champ { display: grid; gap: 4px; font-size: 0.88rem; color: var(--discret); min-width: 0; }
+label.champ.etroit { width: 9.5rem; }
+input[type="text"], input[type="number"], textarea {
+  font: 500 1rem var(--police-chiffres);
+  color: var(--encre);
+  background: var(--fond);
+  border: 1px solid var(--trait);
+  border-radius: 8px;
+  padding: 8px 10px;
+  width: 100%;
+  min-width: 0;
+}
+textarea { font-size: 0.8rem; line-height: 1.45; min-height: 220px; resize: vertical; }
+.pastilles { display: flex; flex-wrap: wrap; gap: 6px; }
+.pastilles button, .bouton-secondaire {
+  font: 600 0.84rem var(--police-texte);
+  color: var(--encre);
+  background: var(--fond);
+  border: 1px solid var(--trait);
+  border-radius: 999px;
+  padding: 5px 11px;
+  cursor: pointer;
+}
+.pastilles button[aria-pressed="true"] { background: var(--tapis-doux); border-color: var(--tapis); color: var(--encre); }
+.compteur { display: inline-flex; align-items: center; border: 1px solid var(--trait); border-radius: 8px; overflow: hidden; }
+.compteur button { width: 38px; height: 38px; border: 0; background: var(--fond); color: var(--encre); font-size: 1.1rem; cursor: pointer; }
+.compteur output { min-width: 2.6rem; text-align: center; font: 600 1rem var(--police-chiffres); }
+.bouton {
+  font: 700 0.95rem var(--police-titre);
+  font-variation-settings: "wdth" 105;
+  background: var(--tapis);
+  color: var(--surface);
+  border: 0;
+  border-radius: 9px;
+  padding: 10px 18px;
+  cursor: pointer;
+}
+details summary { cursor: pointer; color: var(--discret); font-size: 0.9rem; }
+details[open] summary { margin-bottom: 10px; }
+
+/* Le verdict */
+.verdict { display: grid; gap: 4px; }
+.verdict .mot {
+  font-family: var(--police-titre);
+  font-variation-settings: "wdth" 122;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5vw, 3.1rem);
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+.mot.bon { color: var(--bon); }
+.mot.mauvais { color: var(--mauvais); }
+.mot.limite { color: var(--limite); }
+.mot.neutre { color: var(--discret); }
+.verdict .resume { margin: 0; color: var(--discret); }
+
+.jauge { display: grid; gap: 6px; }
+.jauge .piste { position: relative; height: 14px; background: var(--fond); border: 1px solid var(--trait); border-radius: 999px; overflow: visible; }
+.jauge .rempli { position: absolute; inset: 0 auto 0 0; border-radius: 999px; background: var(--tapis); transition: width 0.25s ease; }
+.jauge .repere { position: absolute; top: -5px; bottom: -5px; width: 2px; background: var(--encre); transition: left 0.25s ease; }
+.jauge .legende { display: flex; justify-content: space-between; gap: 8px; font-size: 0.82rem; color: var(--discret); font-variant-numeric: tabular-nums; }
+
+.chiffres { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 1px; background: var(--trait); border: 1px solid var(--trait); border-radius: 10px; overflow: hidden; }
+.chiffres div { background: var(--surface); padding: 10px 12px; display: grid; gap: 2px; min-width: 0; }
+.chiffres dt { font-size: 0.76rem; color: var(--discret); }
+.chiffres dd { margin: 0; font: 500 1.15rem var(--police-chiffres); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.chiffres dd.bon { color: var(--bon); }
+.chiffres dd.mauvais { color: var(--mauvais); }
+
+ul.raisons { margin: 0; padding-left: 1.1rem; display: grid; gap: 6px; }
+ul.raisons li { max-width: 62ch; }
+.repartition { display: grid; gap: 4px; }
+.repartition .barre { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr) 3.6rem; gap: 8px; align-items: center; font-size: 0.85rem; }
+.repartition .barre div { height: 8px; background: var(--fond); border-radius: 999px; overflow: hidden; }
+.repartition .barre div span { display: block; height: 100%; background: var(--tapis); opacity: 0.75; }
+.repartition .barre output { text-align: right; font-family: var(--police-chiffres); font-variant-numeric: tabular-nums; }
+.methode { font-size: 0.8rem; color: var(--discret); margin: 0; }
+
+/* Session */
+.tableau-defile { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 0.86rem; }
+th { text-align: left; font-weight: 600; color: var(--discret); border-bottom: 1px solid var(--trait); padding: 6px 8px; white-space: nowrap; }
+td { border-bottom: 1px solid var(--trait); padding: 7px 8px; vertical-align: top; }
+td.n, th.n { text-align: right; white-space: nowrap; }
+td.n { font-family: var(--police-chiffres); font-variant-numeric: tabular-nums; }
+.fuites { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.fuites li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 10px; align-items: baseline; }
+.fuites li p { grid-column: 2; margin: 0; color: var(--discret); font-size: 0.9rem; }
+.gravite { font: 700 0.7rem var(--police-titre); letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px; padding: 3px 8px; border: 1px solid currentColor; white-space: nowrap; }
+.gravite.forte { color: var(--mauvais); }
+.gravite.moyenne { color: var(--limite); }
+.gravite.info { color: var(--discret); }
+.positif { color: var(--bon); }
+.negatif { color: var(--mauvais); }
+
+footer.pied { color: var(--discret); font-size: 0.82rem; max-width: 75ch; }
+footer.pied p { margin: 0 0 6px; }
+
+@media (max-width: 480px) {
+  .emplacements { gap: 6px; }
+  .emplacement { width: 38px; height: 54px; }
+  .emplacement .carte b { font-size: 1.1rem; }
+  .emplacement .carte i { font-size: 0.95rem; }
+  .separateur { margin: 0 1px; }
+  label.champ.etroit { width: calc(50% - 6px); }
+  nav.onglets { width: 100%; }
+  nav.onglets a { flex: 1; text-align: center; padding: 7px 6px; font-size: 0.86rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jauge .rempli, .jauge .repere { transition: none; }
+}
+</style>
+
+<div class="page">
+  <header class="entete">
+    <div>
+      <h1>Table de décision</h1>
+      <p class="sous-titre">Hold'em No Limit : ton équité contre la range adverse, la cote du pot, et le verdict. Les montants sont dans l'unité que tu veux, euros, jetons ou grosses blindes.</p>
+    </div>
+    <nav class="onglets" aria-label="Outils">
+      <a href="#decision" data-vue="decision">Suivre ou pas</a>
+      <a href="#tapis" data-vue="tapis">Tapis ou pas</a>
+      <a href="#session" data-vue="session">Analyse de session</a>
+    </nav>
+  </header>
+
+  <!-- Suivre ou pas -->
+  <section class="vue" id="vue-decision" aria-label="Suivre ou se coucher">
+    <div class="panneau">
+      <div class="groupe">
+        <p class="etiquette">Tes cartes et le tableau</p>
+        <div class="emplacements" id="decision-emplacements"></div>
+        <p class="aide">Touche une case, puis une carte. Touche une carte posée pour la retirer.</p>
+      </div>
+      <div class="paquet" id="decision-paquet" aria-label="Paquet de cartes"></div>
+
+      <div class="groupe">
+        <p class="etiquette">Adversaires</p>
+        <div class="ligne">
+          <div class="compteur" aria-label="Nombre d'adversaires">
+            <button type="button" id="adv-moins" aria-label="Un adversaire de moins">−</button>
+            <output id="adv-nombre" aria-live="polite">1</output>
+            <button type="button" id="adv-plus" aria-label="Un adversaire de plus">+</button>
+          </div>
+          <label class="champ" style="flex: 1 1 14rem">Range prêtée à chacun
+            <input type="text" id="decision-range" value="25%" autocomplete="off" spellcheck="false">
+          </label>
+        </div>
+        <div class="pastilles" id="decision-pastilles"></div>
+        <p class="aide" id="decision-range-info"></p>
+      </div>
+
+      <div class="groupe">
+        <p class="etiquette">Le pot</p>
+        <div class="ligne">
+          <label class="champ etroit">Pot, mise adverse comprise
+            <input type="number" id="decision-pot" min="0" step="any" value="12" inputmode="decimal">
+          </label>
+          <label class="champ etroit">À suivre
+            <input type="number" id="decision-suivre" min="0" step="any" value="6" inputmode="decimal">
+          </label>
+        </div>
+        <details>
+          <summary>Rake et gains implicites</summary>
+          <div class="ligne">
+            <label class="champ etroit">Rake (%)
+              <input type="number" id="decision-rake" min="0" max="20" step="any" value="0" inputmode="decimal">
+            </label>
+            <label class="champ etroit">Plafond du rake
+              <input type="number" id="decision-plafond" min="0" step="any" value="" placeholder="aucun" inputmode="decimal">
+            </label>
+            <label class="champ etroit">Gains implicites
+              <input type="number" id="decision-implicites" min="0" step="any" value="0" inputmode="decimal">
+            </label>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div class="panneau verdict-panneau" aria-live="polite" id="decision-verdict"></div>
+  </section>
+
+  <!-- Tapis ou pas -->
+  <section class="vue" id="vue-tapis" aria-label="Tapis ou se coucher" hidden>
+    <div class="panneau">
+      <div class="groupe">
+        <p class="etiquette">Tes cartes</p>
+        <div class="emplacements" id="tapis-emplacements"></div>
+      </div>
+      <div class="paquet" id="tapis-paquet" aria-label="Paquet de cartes"></div>
+
+      <div class="groupe">
+        <p class="etiquette">Ta place</p>
+        <div class="pastilles" id="tapis-places"></div>
+      </div>
+
+      <div class="groupe">
+        <p class="etiquette">Les tapis, en grosses blindes ou en jetons</p>
+        <div class="ligne">
+          <label class="champ etroit">Ton tapis, derrière
+            <input type="number" id="tapis-hero" min="0" step="any" value="9.5" inputmode="decimal">
+          </label>
+          <label class="champ etroit">Déjà posé par toi
+            <input type="number" id="tapis-poste" min="0" step="any" value="0.5" inputmode="decimal">
+          </label>
+          <label class="champ etroit">Pot actuel
+            <input type="number" id="tapis-pot" min="0" step="any" value="1.5" inputmode="decimal">
+          </label>
+          <label class="champ etroit">Tapis adverse, derrière
+            <input type="number" id="tapis-adverse" min="0" step="any" value="19" inputmode="decimal">
+          </label>
+          <label class="champ etroit">Déjà posé par lui
+            <input type="number" id="tapis-poste-adverse" min="0" step="any" value="1" inputmode="decimal">
+          </label>
+        </div>
+      </div>
+
+      <div class="groupe">
+        <p class="etiquette">Ceux qui parlent après toi</p>
+        <div class="ligne">
+          <div class="compteur" aria-label="Joueurs encore à parler">
+            <button type="button" id="derriere-moins" aria-label="Un joueur de moins">−</button>
+            <output id="derriere-nombre" aria-live="polite">1</output>
+            <button type="button" id="derriere-plus" aria-label="Un joueur de plus">+</button>
+          </div>
+          <label class="champ" style="flex: 1 1 14rem">Ils suivent un tapis avec
+            <input type="text" id="tapis-range" value="25%" autocomplete="off" spellcheck="false">
+          </label>
+        </div>
+        <div class="pastilles" id="tapis-pastilles"></div>
+        <p class="aide" id="tapis-range-info"></p>
+      </div>
+    </div>
+
+    <div class="panneau verdict-panneau" aria-live="polite" id="tapis-verdict"></div>
+  </section>
+
+  <!-- Analyse de session -->
+  <section class="vue large" id="vue-session" aria-label="Analyse de session" hidden>
+    <div class="panneau">
+      <div class="groupe">
+        <p class="etiquette">Ton historique de mains</p>
+        <p class="aide">Colle le texte de tes mains, ou charge le fichier exporté. Formats lus : PokerStars, Winamax et équivalents en français. L'exemple ci-dessous est une session fictive.</p>
+        <textarea id="session-texte" spellcheck="false" aria-label="Historique de mains" placeholder="PokerStars Hand #… / Winamax Poker - … (une main après l'autre)"></textarea>
+      </div>
+      <div class="ligne">
+        <label class="champ" style="flex: 1 1 12rem">Ton pseudo (facultatif)
+          <input type="text" id="session-hero" autocomplete="off" spellcheck="false" placeholder="détecté tout seul">
+        </label>
+        <label class="champ" style="flex: 1 1 12rem">Range prêtée à celui qui mise
+          <input type="text" id="session-range" value="30%" autocomplete="off" spellcheck="false">
+        </label>
+        <label class="bouton-secondaire" for="session-fichier" style="align-self: end">Charger un fichier
+          <input type="file" id="session-fichier" accept=".txt,text/plain" hidden>
+        </label>
+        <button type="button" class="bouton" id="session-analyser" style="align-self: end">Analyser</button>
+      </div>
+    </div>
+    <div class="panneau" id="session-resultat" aria-live="polite"></div>
+  </section>
+
+  <footer class="pied">
+    <p>Outil d'étude, à utiliser entre deux sessions. Les salles régulées interdisent en général les logiciels d'aide pendant le jeu : vérifie le règlement de Betclic avant tout usage en partie.</p>
+    <p>Équité exacte quand le nombre de distributions le permet, sinon Monte-Carlo avec sa marge d'erreur. Les ranges « 25% » suivent le classement des 169 mains contre une main au hasard.</p>
+  </footer>
+</div>
+
+<script type="module" src="web/app.js"></script>
